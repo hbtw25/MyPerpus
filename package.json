@@ -1,0 +1,31 @@
+{
+    "name": "tyzals",
+    "version": "1.0.0",
+    "description": "Digital library landing page design with a modern and clean layout",
+    "type": "module",
+    "author": "alfianchii",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "keywords": [
+        "application",
+        "laravel",
+        "library",
+        "digital"
+    ],
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.7",
+        "autoprefixer": "^10.4.17",
+        "axios": "^1.6.4",
+        "flowbite": "^2.2.1",
+        "laravel-vite-plugin": "^1.0.0",
+        "postcss": "^8.4.33",
+        "prettier-plugin-tailwindcss": "^0.5.11",
+        "tailwindcss": "^3.4.1",
+        "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "moment": "^2.30.1"
+    }
+}

@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: 200;
+        src: local("Plus Jakarta Sans"),
+            url("../fonts/PlusJakartaSans-ExtraLight.ttf"), format("ttf");
+    }
+
+    @font-face {
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: 300;
+        src: local("Plus Jakarta Sans"),
+            url("../fonts/PlusJakartaSans-Light.ttf"), format("ttf");
+    }
+
+    @font-face {
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: 400;
+        src: local("Plus Jakarta Sans"),
+            url("../fonts/PlusJakartaSans-Regular.ttf"), format("ttf");
+    }
+
+    @font-face {
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: 500;
+        src: local("Plus Jakarta Sans"),
+            url("../fonts/PlusJakartaSans-Medium.ttf"), format("ttf");
+    }
+
+    @font-face {
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: 600;
+        src: local("Plus Jakarta Sans"),
+            url("../fonts/PlusJakartaSans-SemiBold.ttf"), format("ttf");
+    }
+
+    @font-face {
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: 700;
+        src: local("Plus Jakarta Sans"),
+            url("../fonts/PlusJakartaSans-Bold.ttf"), format("ttf");
+    }
+
+    @font-face {
+        font-family: "Plus Jakarta Sans";
+        font-style: normal;
+        font-weight: 800;
+        src: local("Plus Jakarta Sans"),
+            url("../fonts/PlusJakartaSans-ExtraBold.ttf"), format("ttf");
+    }
+}
