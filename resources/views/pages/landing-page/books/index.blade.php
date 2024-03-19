@@ -27,7 +27,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 9 4-4-4-4" />
                     </svg>
-                    <span class="text-sm font-medium text-slate-grey ms-1 md:ms-2">Books</span>
+                    <span class="text-sm font-medium text-slate-grey ms-1 md:ms-2">Buku</span>
                 </div>
             </li>
         </ol>
@@ -36,12 +36,12 @@
     {{-- Content --}}
     <section class="pt-10 min-h-[30vw]">
         <div class="flex flex-col w-full md:w-10/12 lg:w-8/12">
-            <h2 class="mt-5 text-3xl font-semibold tracking-wide lg:text-5xl text-midnight-blue">📚• Books</h2>
-            <p class="mt-3 leading-loose text-slate-grey"><span class="text-dodger-blue">Books</span> open doors
-                to <span class="text-dodger-blue">new
-                    worlds</span>, ideas, and perspectives. They
-                inviting readers to explore the depths of human experience and the vastness of the universe.</p>
+            <h2 class="mt-5 text-3xl font-semibold tracking-wide lg:text-5xl text-midnight-blue">📚• Buku</h2>
+            <p class="mt-3 leading-loose text-slate-grey"><span class="text-dodger-blue">Buku-buku</span> membuka pintu-pintu
+                menuju <span class="text-dodger-blue">dunia-dunia</span> baru, gagasan, dan perspektif. Mereka mengundang para
+                pembaca untuk menjelajahi kedalaman pengalaman manusia dan luasnya alam semesta.</p>
         </div>
+
 
         <section class="pt-20">
             <div class="flex flex-col items-start justify-center w-full mb-8 gap-y-6">

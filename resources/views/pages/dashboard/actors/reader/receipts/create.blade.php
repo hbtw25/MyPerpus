@@ -41,14 +41,10 @@
                             <div class="form-group has-icon-left mandatory @error('id_user'){{ 'is-invalid' }}@enderror">
                                 <label for="user" class="form-label">User</label>
                                 <div class="position-relative">
-                                    <select id="user" class="choices form-select" name="id_user">
-                                        <option placeholder>Please pick the reader ...</option>
-                                        @foreach ($users as $user)
-                                            <option value="{{ $user->id_user }}"
-                                                @if (old('id_user') == $user->id_user) selected @endif>{{ $user->nama_lengkap }}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                    <!-- Menampilkan nama lengkap user yang sedang login -->
+                                    <input type="text" class="form-control" value="{{ Auth::user()->nama_lengkap }}" readonly>
+                                    <!-- Menyimpan id_user yang sedang login dalam input hidden -->
+                                    <input type="hidden" name="id_user" value="{{ Auth::user()->id_user }}">
 
                                     @error('id_user')
                                         <div style="margin-top: -20px" class="invalid-feedback d-block">
@@ -58,6 +54,8 @@
                                 </div>
                             </div>
                         </div>
+
+
 
                         <div class="mb-1 col-md-6 col-12">
                             <div class="form-group has-icon-left mandatory @error('id_buku'){{ 'is-invalid' }}@enderror">

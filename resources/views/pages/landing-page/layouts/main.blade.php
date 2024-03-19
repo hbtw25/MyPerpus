@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
-    <link rel="shortcut icon" href="{{ asset('assets/logo/high-resolutions/logo-square.png') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('https://www.smknegeri1garut.sch.id/tampilan/img/logo.png') }}" type="image/x-icon" />
 
     @include('utils.sweetalert.link')
     @vite('resources/css/app.css')

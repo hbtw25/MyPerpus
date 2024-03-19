@@ -185,6 +185,14 @@
                                                 peminjam
                                             </label>
                                         </div>
+                                        <div class="form-check me-3">
+                                            <input class="form-check-input" type="radio" name="role"
+                                                id="role-reader" value="admin"
+                                                @if (old('role') == 'admin') checked @endif>
+                                            <label class="form-check-label form-label" for="role-reader">
+                                                admin
+                                            </label>
+                                        </div>
                                     </div>
                                 </fieldset>
 

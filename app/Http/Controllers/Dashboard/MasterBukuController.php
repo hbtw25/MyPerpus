@@ -43,7 +43,7 @@ class MasterBukuController extends Controller
             return view('pages.dashboard.actors.admin.books.index', $viewVariables);
         };
 
-        if ($theUser->role == "officer") {
+        if ($theUser->role == "petugas") {
             $viewVariables = [
                 "title" => "Book",
                 "books" => $books,
@@ -68,7 +68,7 @@ class MasterBukuController extends Controller
             return view('pages.dashboard.actors.admin.books.create', $viewVariables);
         };
 
-        if ($theUser->role == "officer") {
+        if ($theUser->role == "petugas") {
             $viewVariables = [
                 "title" => "Create Book",
                 "genres" => $genres,
@@ -95,7 +95,7 @@ class MasterBukuController extends Controller
             return redirect("/dashboard/books")->withSuccess("The book has been created!");
         };
 
-        if ($theUser->role == "officer") {
+        if ($theUser->role == "petugas") {
             $credentials = $request->validate($this->rules);
             $credentials["created_by"] = $theUser->id_user;
 
@@ -125,7 +125,7 @@ class MasterBukuController extends Controller
             return view('pages.dashboard.actors.admin.books.edit', $viewVariables);
         };
 
-        if ($theUser->role == "officer") {
+        if ($theUser->role == "petugas") {
             $viewVariables = [
                 "title" => $book->title,
                 "book" => $book,
@@ -158,7 +158,7 @@ class MasterBukuController extends Controller
             return redirect("/dashboard/books")->withSuccess("The book has been updated!");
         };
 
-        if ($theUser->role == "officer") {
+        if ($theUser->role == "petugas") {
             $credentials = $request->validate($this->rules);
             $credentials["updated_by"] = $theUser->id_user;
 
@@ -196,7 +196,7 @@ class MasterBukuController extends Controller
             return $this->responseJsonMessage("The book has been removed!");
         };
 
-        if ($theUser->role == "officer") {
+        if ($theUser->role == "petugas") {
             try {
                 if ($book->stock > 0)
                     throw new \Exception("Stock in this book prevents removing.");
@@ -227,7 +227,7 @@ class MasterBukuController extends Controller
         if ($theUser->role == "admin") {
             if ($creds["table"] === "all-of-books") return (new AllOfBooksExport)->download($fileName, $writterType);
         };
-        if ($theUser->role == "officer") {
+        if ($theUser->role == "petugas") {
             if ($creds["table"] === "all-of-books") return (new AllOfBooksExport)->download($fileName, $writterType);
         };
 

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger("id_buku");
             $table->unsignedBigInteger("id_user");
             $table->text("body");
+            $table->integer('rating');
             $table->string("photo")->nullable();
 
             $table->foreign("id_buku")

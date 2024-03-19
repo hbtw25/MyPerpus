@@ -18,6 +18,7 @@ class UlasanController extends Controller
     // PROPERTIES
     protected array $rules = [
         "body" => ["required"],
+        "rating" => ["required", "numeric", "integer", "min:1", "max:5"],
         "photo" => ["nullable", "image", "file", "max:1024"],
     ];
 

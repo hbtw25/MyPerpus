@@ -27,7 +27,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 9 4-4-4-4" />
                     </svg>
-                    <span class="text-sm font-medium text-slate-grey ms-1 md:ms-2">Genres</span>
+                    <span class="text-sm font-medium text-slate-grey ms-1 md:ms-2">Kategori</span>
                 </div>
             </li>
         </ol>
@@ -36,10 +36,8 @@
     {{-- Content --}}
     <section class="pt-10">
         <div class="flex flex-col w-full md:w-10/12 lg:w-8/12">
-            <h2 class="mt-5 text-3xl font-semibold tracking-wide lg:text-5xl text-midnight-blue">✏️• Genres</h2>
-            <p class="mt-3 leading-loose text-slate-grey">So <span class="text-dodger-blue">many genres</span> available on
-                this application. However, you can
-                search your favorite genre!</p>
+            <h2 class="mt-5 text-3xl font-semibold tracking-wide lg:text-5xl text-midnight-blue">✏️• Kategori</h2>
+            <p class="mt-3 leading-loose text-slate-grey">Halo! <span class="text-dodger-blue">Banyak Kategori Buku</span> yang tersedia di aplikasi website ini. Nahh, Kamu bisa cari Buku sesuai Kategori Kesukaanmu!</p>
         </div>
 
         <section class="pt-20">

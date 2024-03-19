@@ -3,9 +3,9 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center w-1/2">
                 <a href="/" class="flex items-center max-h-full me-28">
-                    <img class="h-10" src="{{ asset('assets/logo/high-resolutions/logo-rounded.png') }}" alt="logo">
+                    <img class="h-10" src="{{ asset('https://www.smknegeri1garut.sch.id/tampilan/img/logo.png') }}" alt="logo">
                     <span id="navbar-logo-text"
-                        class="text-lg font-bold text-black transition-all duration-300 ms-4">Tyzals</span>
+                        class="text-lg font-bold text-black transition-all duration-300 ms-4">{{ config('app.name') }}</span>
                 </a>
 
                 <div id="navbar-menu"
@@ -18,32 +18,39 @@
                             </li>
                             <li
                                 class="text-base font-medium transition-all duration-300 md:text-sm hover:text-royal-blue @if (Request::is('books*')) text-dodger-blue @endif">
-                                <a href="/books">Books</a>
+                                <a href="/books">Buku</a>
                             </li>
                             <li
                                 class="text-base font-medium transition-all duration-300 md:text-sm hover:text-royal-blue @if (Request::is('genres*')) text-dodger-blue @endif">
-                                <a href="/genres">Genres</a>
+                                <a href="/genres">Kategori</a>
                             </li>
                         @else
                             <li class="text-base font-medium transition-all duration-300 md:text-sm hover:text-royal-blue">
-                                <a href="/#features">Feature</a>
+                                <a href="/#fitur">Fitur</a>
                             </li>
                             <li class="text-base font-medium transition-all duration-300 md:text-sm hover:text-royal-blue">
-                                <a href="/#services">Service</a>
+                                <a href="/#layanan">Layanan</a>
                             </li>
+                            @auth
                             <li class="text-base font-medium transition-all duration-300 md:text-sm hover:text-royal-blue">
-                                <a href="/#reviews">Review</a>
+                                <a href="/#ulasan">Ulasan</a>
                             </li>
+                            @else
                             <li class="text-base font-medium transition-all duration-300 md:text-sm hover:text-royal-blue">
-                                <a href="/#location">Location</a>
+                                <a href="/#profil">Profil</a>
+                            </li>
+                            @endauth
+
+                            <li class="text-base font-medium transition-all duration-300 md:text-sm hover:text-royal-blue">
+                                <a href="/#lokasi">Lokasi</a>
                             </li>
                             <div class="relative group">
                                 <button class="text-base font-medium transition-all duration-300 md:text-sm hover:text-royal-blue focus:outline-none">
-                                    Explore
+                                    Jelajahi
                                 </button>
                                 <div class="absolute hidden w-32 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none group-hover:block">
-                                    <a href="/books" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Books</a>
-                                    <a href="/genres" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Genres</a>
+                                    <a href="/books" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Buku</a>
+                                    <a href="/genres" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Kategori</a>
                                 </div>
                             </div>
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Models\Koleksi_pribadi;
 use App\Models\Buku;
-
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,8 +67,15 @@ class BukuController extends Controller
      {
          $user = Auth::user();
 
+
+         // Check if the user has already reviewed the book
+         if ($book->reviews()->where('id_user', $user->id_user)->exists()) {
+             return redirect("/books/{$book->id_buku}")->withError("You have already reviewed this book!");
+         }
+
          $credentials = $request->validate([
              "body" => ["required"],
+             "rating" => ["required", "numeric", "integer", "min:1", "max:5"],
              "photo" => ["nullable", "image", "file", "max:1024"],
          ]);
          $credentials["id_user"] = $user->id_user;
@@ -79,4 +86,5 @@ class BukuController extends Controller
 
          return redirect("/books/{$book->id_buku}")->withSuccess("Your review has been posted!");
      }
+
 }

@@ -88,6 +88,7 @@
                             <th>Date</th>
                             <th>Review</th>
                             <th>Photo</th>
+                            <th>rating</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -104,6 +105,7 @@
                                         <span class="badge bg-light-dark">No</span>
                                     @endif
                                 </td>
+                                <td>{{ str_repeat('★', ($review->rating)) }}{{ str_repeat('☆', 5 - ($review->rating)) }}</td>
                                 <td>
                                     <div class="d-flex">
                                         <div class="me-2">

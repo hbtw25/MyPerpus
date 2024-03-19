@@ -22,7 +22,7 @@ class UserController extends Controller
         "username" => ["required", "unique:users,username", "min:3", "max:30"],
         "alamat" => ["required"],
         "email" => ["required", "unique:users,email", "email:rfc,dns"],
-        "role" => ["required", "in:petugas,peminjam"],
+        "role" => ["required", "in:petugas,peminjam,admin"],
         "profile_picture" => ["nullable", "image", "file", "max:5120"],
         "password" => ["required", "confirmed", "min:6"],
         "password_confirmation" => ["required", "min:6", "required_with:password", "same:password"],
