@@ -65,6 +65,7 @@ Aplikasi digital perpustakaan dengan tata letak yang modern dan bersih, halaman 
 -   Kata Sandi: password
 
 <h2 id="demo">🏦 ERD & DATABASE</h2>
+
 ![ERD](https://github.com/hbtw25/perpus-v2/blob/main/erd.png?raw=true)
 
 <h2 id="demo">🏠 Halaman Demo</h2>
