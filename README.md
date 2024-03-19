@@ -1,5 +1,6 @@
 <h1 align="center">Proyek UKK perpus hbtw! 👋</h1>
 
+![Landing Page](https://github.com/hbtw25/perpus-v2/blob/main/public/assets/perpus-v2.test_.png?raw=true)
 ---
 
 <h2 id="tentang">🤔 Apa Konsep web yang saya buat?</h2>
