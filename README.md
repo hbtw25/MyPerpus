@@ -5,7 +5,7 @@
 
 <h2 id="tentang">🤔 Apa Konsep web yang saya buat?</h2>
 
-Library digital application with a modern and clean layout, this page features a striking hero section with a bold call-to-action, along with easy-to-scan service descriptions, reviews, and location sections.
+Aplikasi digital perpustakaan dengan tata letak yang modern dan bersih, halaman ini menampilkan hero section yang mencolok, bersama dengan deskripsi layanan, ulasan, dan bagian lokasi yang mudah diakses.
 
 <h2 id="fitur">🤨 Fitur apa aja sih yg ada di proyek ini?</h2>
 
@@ -29,13 +29,13 @@ Library digital application with a modern and clean layout, this page features a
         -   Buku yang dapat dikelola
         -   Genre (Kategori) buku yang dapat dikelola
         -   Melihat semua data secara keseluruhan (widget ui)
-        -   Pembuat excel (export data)
+        -   Generate Laporan (EXCEL, CSV, HTML, PDF)
     -   Petugas
         -   Menangani penerimaan / peminjaman buku
-        -   Pembuat excel (export data)
+        -   Generate Laporan (EXCEL, CSV, HTML, PDF)
     -   Peminjam / Pembaca
         -   Mencari buku
-        -   Memberikan Ulasan buku
+        -   Memberikan Rating dan Ulasan buku
         -   Daftar keinginan buku (whislist / bookmark)
         -   Melihat peminjaman buku mereka sendiri
         -   Register (membuat akun sebagai peminjam)
@@ -47,39 +47,42 @@ Library digital application with a modern and clean layout, this page features a
     -   Buku
     -   Genre (kategori) Buku
 
-<h2 id="testing-account">👤 Default account for testing</h2>
+<h2 id="testing-account">👤 Akun Default untuk Pengujian</h2>
 
 ### 👨‍🏫 Admin
 
--   Username: hbtw
--   Password: password
+-   Nama Pengguna: hbtw
+-   Kata Sandi: password
 
 ### 🧖 Petugas
 
--   Username: adira
--   Password: password
+-   Nama Pengguna: adira
+-   Kata Sandi: password
 
 ### 🧗 Peminjam
 
--   Username: dxx
--   Password: password
+-   Nama Pengguna: dxx
+-   Kata Sandi: password
 
-<h2 id="demo">🏠 Demo page</h2>
+<h2 id="demo">🏦 ERD & DATABASE</h2>
+![ERD](https://github.com/hbtw25/perpus-v2/blob/main/erd.png?raw=true)
 
-<p>The demo page is currently unavailable. Therefore, it is advisable for you to try it locally by following the installation steps below.</p>
+<h2 id="demo">🏠 Halaman Demo</h2>
 
-<h2 id="pre-requisite">💾 Pre-requisite</h2>
+<p>Halaman demo saat ini tidak tersedia. Oleh karena itu, disarankan untuk mencobanya secara lokal dengan mengikuti langkah-langkah instalasi di bawah ini.</p>
 
-<p>Here are the prerequisites required for installing and running the application.</p>
+<h2 id="pre-requisite">💾 Prasyarat</h2>
 
--   PHP 8.2.8 & Web Server (Apache, Lighttpd, or Nginx)
--   Database (MariaDB w/ v11.0.3 or PostgreSQL)
--   Web Browser (Firefox, Safari, Opera, etc)
+<p>Berikut adalah prasyarat yang diperlukan untuk menginstal dan menjalankan aplikasi.</p>
 
-<h2 id="installation">💻 Installation</h2>
+-   PHP 8.2.8 & Web Server (Apache, Lighttpd, atau Nginx)
+-   Database (MariaDB dengan v11.0.3 atau PostgreSQL)
+-   Web Browser (Firefox, Safari, Opera, dll)
 
-<h3 id="develop-yourself">🏃‍♂️ Develop by yourself</h3>
-1. Clone repository
+<h2 id="installation">💻 Instalasi</h2>
+
+<h3 id="develop-yourself">🏃‍♂️ Mengembangkan Sendiri</h3>
+1. Klona repositori
 
 ```bash
 git clone https://github.com/hbtw25/perpus-v2.git
@@ -89,16 +92,16 @@ npm install
 cp .env.example .env
 ```
 
-2. Database configuration through the `.env` file
+2. Konfigurasi database melalui file `.env`
 
 ```conf
 APP_DEBUG=true
 DB_DATABASE=perpus_v2
-DB_USERNAME=your-username
-DB_PASSWORD=your-password
+DB_USERNAME=nama-pengguna-anda
+DB_PASSWORD=kata-sandi-anda
 ```
 
-3. Migration and symlink
+3. Migrasi dan symlink
 
 ```bash
 php artisan key:generate
@@ -106,80 +109,80 @@ php artisan storage:link
 php artisan migrate --seed
 ```
 
-4. Launch the website
+4. Mulai situs web
 
 ```bash
 npm run dev
-# Run in different terminal
+# Jalankan di terminal yang berbeda
 php artisan serve
 ```
 
-<h3 id="develop-docker">🐳 Develop w/ Docker</h3>
+<h3 id="develop-docker">🐳 Mengembangkan dengan Docker</h3>
 
--   Clone the repository:
+-   Klona repositori:
 
 ```bash
 git clone https://github.com/hbtw25/perpus-v2.git
 cd perpus-v2
 ```
 
--   Copy `.env.example` file with `cp .env.example .env` and configure database:
+-   Salin file `.env.example` dengan `cp .env.example .env` dan konfigurasikan database:
 
 ```conf
 APP_DEBUG=true
 DB_HOST=mariadb
 DB_DATABASE=perpus_v2
-DB_USERNAME=your-username
-DB_PASSWORD=your-password
+DB_USERNAME=nama-pengguna-anda
+DB_PASSWORD=kata-sandi-anda
 ```
 
--   Make sure you have Docker installed and run:
+-   Pastikan Anda telah menginstal Docker dan jalankan:
 
 ```bash
 docker compose up --build -d
 ```
 
--   Install dependencies:
+-   Instal dependensi:
 
 ```bash
 docker compose run --rm composer install
 docker compose run --rm npm install
 ```
 
--   Laravel setups:
+-   Setup Laravel:
 
 ```bash
 docker compose run --rm laravel-setup
 ```
 
--   Run locally:
+-   Jalankan secara lokal:
 
 ```bash
 docker compose run --rm --service-ports npm run dev
 ```
 
--   Pages
--   -   App: `http://127.0.0.1`
+-   Halaman
+-   -   Aplikasi: `http://127.0.0.1`
 -   -   PhpMyAdmin: `http://127.0.0.1:8888`
 -   -   MailHog: `http://127.0.0.1:8025`
 
-<h4 id="docker-commands">🔐 Commands</h4>
+<h4 id="docker-commands">🔐 Perintah</h4>
 
 -   Composer
 -   -   `docker-compose run --rm composer install`
 -   -   `docker-compose run --rm composer require laravel/breeze --dev`
--   -   Etc
+-   -   Dsb
 
 -   NPM
 -   -   `docker-compose run --rm npm install`
 -   -   `docker-compose run --rm --service-ports npm run dev`
--   -   Etc
+-   -   Dsb
 
 -   Artisan
 -   -   `docker-compose run --rm artisan serve`
 -   -   `docker-compose run --rm artisan route:list`
--   -   Etc
+-   -   Dsb
 
-<h2 id="pembuat">🧍 Author</h2>
+<h2 id="pembuat">🧍 Pembuat</h2>
 
-<p>perpus-v2 is created by <a href="https://instagram.com/hbtwwwwww">hbtw</a>.</p>
+<p>perpus-v2 dibuat oleh <a href="https://instagram.com/hbtwwwwww">hbtw</a>.</p>
