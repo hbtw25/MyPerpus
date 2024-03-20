@@ -64,9 +64,19 @@ Aplikasi digital perpustakaan dengan tata letak yang modern dan bersih, halaman 
 -   Nama Pengguna: dxx
 -   Kata Sandi: password
 
-<h2 id="demo">🏦 ERD & DATABASE</h2>
+<h2 id="demo">🏦 ERD & Relasi antar tabel</h2>
 
 ![ERD](https://github.com/hbtw25/perpus-v2/blob/main/erd.png?raw=true)
+
+![RAT](https://github.com/hbtw25/perpus-v2/blob/main/relasiantartabel.png?raw=true)
+
+Tabel Failed_Jobs, Personal_access_tokens, Password_reset_tokens, migrations abaikan saja karna bawaan dari Laravel.
+
+
+<h2 id="demo">🏦 UML Diagram Use Case</h2>
+
+![UML](https://github.com/hbtw25/perpus-v2/blob/main/uml.jpeg?raw=true)
+
 
 <h2 id="demo">🏠 Halaman Demo</h2>
 
