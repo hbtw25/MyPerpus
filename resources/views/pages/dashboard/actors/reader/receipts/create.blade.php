@@ -65,7 +65,7 @@
                                         <option placeholder>Please pick the book ...</option>
                                         @foreach ($books as $book)
                                             <option value="{{ $book->id_buku }}"
-                                                @if (old('id_buku') == $book->id_buku) selected @endif>{{ $book->judul }}
+                                                @if (old('id_buku') == $book->id_buku) selected @elseif ($book->id_buku == $id_buku) selected @endif>{{ $book->judul }}
                                                 ({{ $book->stock }})
                                             </option>
                                         @endforeach

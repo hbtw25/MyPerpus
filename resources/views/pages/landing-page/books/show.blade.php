@@ -130,9 +130,10 @@
 
                         @endforeach
                         <br>
-                        <a href="/dashboard/receipts/create">
-                            <button  class="bg-green-500 hover:bg-green-600 text-white font-bold mt-10 py-2 px-20 rounded">Pinjam buku</button>
-                          </a>
+                        <form action="/dashboard/receipts/create">
+                            <input type="hidden" name="id_buku" value="{{$book->id_buku}}">
+                            <button type="submit"  class="bg-green-500 hover:bg-green-600 text-white font-bold mt-10 py-2 px-20 rounded">Pinjam buku</button>
+                        </form>
                     </p>
 
 

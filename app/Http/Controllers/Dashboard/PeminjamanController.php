@@ -62,7 +62,7 @@ class PeminjamanController extends Controller
         return view("errors.403");
     }
 
-    public function create()
+    public function create(Request $request)
     {
         $theUser = Auth::user();
         $users = User::where("role", "peminjam")->where("flag_active", "Y")->get();
@@ -98,6 +98,7 @@ class PeminjamanController extends Controller
                 "title" => "Create Receipt",
                 "users" => $users->where("id_user", $theUser->id_user),
                 "books" => $books,
+                "id_buku" =>$request->id_buku
             ];
             return view("pages.dashboard.actors.reader.receipts.create", $viewVariables);
 

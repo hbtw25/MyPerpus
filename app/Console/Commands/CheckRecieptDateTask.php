@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\RecBookReceipt;
+use App\Models\Peminjaman;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
@@ -28,20 +28,20 @@ class CheckRecieptDateTask extends Command
      */
     public function handle()
     {
-        $receipts = RecBookReceipt::with(["user"])->get();
+        $receipts = Peminjaman::with(["user"])->get();
         foreach ($receipts as $receipt) {
-            $toTimeReceipt = $receipt->to_time;
+            $toTimeReceipt = $receipt->tanggal_pengembalian;
             $sevenDaysLater = new Carbon($toTimeReceipt);
             $sevenDaysLater = $sevenDaysLater->subDays(-7);
 
-            if ($toTimeReceipt < now() && $receipt->status === "taken") {
+            if ($toTimeReceipt < now() && $receipt->status === "dipinjam") {
                 $fields = [
-                    "status" => "overdue",
+                    "status" => "terlambat",
                 ];
                 $receipt->update($fields);
             }
 
-            if ($receipt->status === "overdue" && now() > $sevenDaysLater) {
+            if ($receipt->status === "terlambat" && now() > $sevenDaysLater) {
                 $receipt->user->delete();
                 $receipt->user->refresh();
                 $receipt->user->update(["flag_active" => "N", "deleted_at" => null]);
