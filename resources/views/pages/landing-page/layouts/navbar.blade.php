@@ -65,7 +65,7 @@
                         <button id="navbar-button-login" data-dropdown-toggle="dropdown"
                             class="inline-flex items-center px-3 py-2 text-sm font-bold text-center text-white transition-all duration-300 rounded-lg outline-none bg-dodger-blue"
                             type="button">Welcome<span class="hidden lg:inline-block">,
-                                {{ auth()->user()->full_name }}</span>!
+                                {{ auth()->user()->nama_lengkap }}</span>!
                             <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 10 6">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

@@ -60,7 +60,7 @@
                     <li class="sidebar-item @if (Request::is('dashboard/genres*')) active @endif">
                         <a href="/dashboard/genres" class='sidebar-link'>
                             <i class="bi bi-book-half"></i>
-                            <span>Genre</span>
+                            <span>Kategori</span>
                         </a>
                     </li>
                 @endcan
@@ -69,26 +69,26 @@
                     <li class="sidebar-item @if (Request::is('dashboard/books*')) active @endif">
                         <a href="/dashboard/books" class='sidebar-link'>
                             <i class="bi bi-book"></i>
-                            <span>Book</span>
+                            <span>Buku</span>
                         </a>
                     </li>
                 @endcanany
                 <li class="sidebar-item @if (Request::is('dashboard/receipts*')) active @endif">
                     <a href="/dashboard/receipts" class='sidebar-link'>
                         <i class="bi bi-ticket-detailed"></i>
-                        <span>Receipt</span>
+                        <span>Peminjaman</span>
                     </a>
                 </li>
                 <li class="sidebar-item @if (Request::is('dashboard/reviews*')) active @endif">
                     <a href="/dashboard/reviews" class='sidebar-link'>
                         <i class="bi bi-newspaper"></i>
-                        <span>Review</span>
+                        <span>Ulasan</span>
                     </a>
                 </li>
                 <li class="sidebar-item @if (Request::is('dashboard/wishlists*')) active @endif">
                     <a href="/dashboard/wishlists" class='sidebar-link'>
                         <i class="bi bi-heart"></i>
-                        <span>Wishlist</span>
+                        <span>Koleksi Pribadi</span>
                     </a>
                 </li>
 

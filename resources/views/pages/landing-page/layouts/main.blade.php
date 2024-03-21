@@ -7,7 +7,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <link rel="shortcut icon" href="{{ asset('https://www.smknegeri1garut.sch.id/tampilan/img/logo.png') }}" type="image/x-icon" />
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>   
+        AOS.init(); 
+   </script>
     @include('utils.sweetalert.link')
     @vite('resources/css/app.css')
     @yield('additional_links')

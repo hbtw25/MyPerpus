@@ -249,7 +249,7 @@
             <div class="col-12 col-lg-3">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="text-center">New Receipt</h4>
+                        <h4 class="text-center">Peminjaman Terbaru</h4>
                     </div>
                     <div class="pb-4 card-content">
                         @forelse ($receipts as $receipt)
@@ -337,7 +337,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">New Review</h3>
+                        <h3 class="card-title">Ulasan Terbaru</h3>
                     </div>
                     <div class="card-body">
                         @forelse ($reviews as $review)

@@ -9,6 +9,7 @@
     {{-- Cover --}}
     <section class="hidden xl:block">
         {{-- Down Shape --}}
+        
         <div class="absolute right-0 -top-[7%] drop-shadow-2xl">
             <img id="down-shape" src="{{ asset('assets/shapes/down-shape.png') }}" alt="Down Shape">
         </div>
@@ -23,40 +24,49 @@
     <div class="grid grid-cols-1 xl:grid-cols-2">
         {{-- Content --}}
         <div>
+            <div data-aos="fade-right">
+
             <h1 class="text-3xl font-extrabold xl:leading-[98px] xl:text-7xl text-center xl:text-start text-midnight-blue">
                 Cari & tinjau
-                buku <span class="underline text-dodger-blue">favoritmu</span> dengan mudah</h1>
+                buku <span class="underline text-dodger-blue">favoritmu</span> dengan mudah</h1></div>
+              
+<div data-aos="fade-up">
             <p class="mt-10 leading-8 text-center xl:text-start xl:w-3/4 text-slate-grey">Mulailah perjalanan literatur seperti
                 belum pernah ada sebelumnya
                 dengan aplikasi
                 perpustakaan revolusioner kami! Memperkenalkan pengalaman yang mulus
                 yang melampaui batas-batas tradisional, di mana Anda
-                dapat dengan mudah mencari buku favorit Anda.✨</p>
+                dapat dengan mudah mencari buku favorit Anda.✨</p></div>
+                
             <div class="flex justify-center mt-16 xl:block">
-                <a href="{{ auth()->check() ? '/dashboard' : '/login' }}"
+                <div data-aos="fade-up">     <a href="{{ auth()->check() ? '/dashboard' : '/login' }}"
                     class="px-12 py-5 font-bold text-white transition-all duration-300 rounded-xl drop-shadow-2xl hover:bg-blue-700 hover:drop-shadow-none bg-dodger-blue">Mulai
-                    sekarang →</a>
+                    sekarang →</a></div>
             </div>
         </div>
 
 
         {{-- Books --}}
+
         <div class="relative hidden xl:block">
             <div class="absolute transition-all left-0 top-48">
+                <div data-aos="fade-down">
                 <img width="210" class="transition-all duration-300 hover:drop-shadow-none rounded-lg drop-shadow-2xl"
                     src="{{ asset('assets/images/Dompet Ayah Sepatu Ibu.png') }}" alt="Dompet Ayah Sepatu Ibu">
+                </div>
             </div>
             <div class="absolute transition-all top-0 xl:right-56 min-[1830px]:right-[400px]">
-                <img width="150" class="transition-all duration-300 hover:drop-shadow-none rounded-lg drop-shadow-2xl"
-                    src="{{ asset('assets/images/Talking to Strangers.png') }}" alt="Talking to Strangers">
+                <div data-aos="fade-down"><img width="150" class="transition-all duration-300 hover:drop-shadow-none rounded-lg drop-shadow-2xl"
+                    src="{{ asset('assets/images/Talking to Strangers.png') }}" alt="Talking to Strangers"></div>
             </div>
             <div class="absolute transition-all right-0 top-28">
-                <img width="150"class="transition-all duration-300 hover:drop-shadow-none rounded-lg drop-shadow-2xl"
-                    src="{{ asset('assets/images/Laut Bercerita.png') }}" alt="Laut Bercerita">
+                <div data-aos="fade-down"> <img width="150"class="transition-all duration-300 hover:drop-shadow-none rounded-lg drop-shadow-2xl"
+                    src="{{ asset('assets/images/Laut Bercerita.png') }}" alt="Laut Bercerita"></div>
             </div>
+
             <div class="absolute transition-all xl:right-40 2xl:right-64 top-[330px]">
-                <img width="110" class="transition-all duration-300 hover:drop-shadow-none rounded-lg drop-shadow-2xl"
-                    src="{{ asset('assets/images/The Visual MBA.png') }}" alt="The Visual MBA">
+               <div data-aos="fade-down"> <img width="110" class="transition-all duration-300 hover:drop-shadow-none rounded-lg drop-shadow-2xl"
+                    src="{{ asset('assets/images/The Visual MBA.png') }}" alt="The Visual MBA"></div>
             </div>
         </div>
     </div>
@@ -64,11 +74,13 @@
    {{-- Fitur --}}
 <div class="relative mt-44">
     <div id="fitur" class="absolute left-0 p-6 -top-32 pb-[100px] bg-transparent"></div>
+    <div data-aos="fade-right">
+
     <h3 class="text-base font-bold tracking-widest lg:text-lg text-dodger-blue">FITUR</h3>
-    <h2 class="mt-5 text-3xl font-extrabold tracking-wide lg:text-5xl text-midnight-blue">🤔• Apa yang Bisa Anda Lakukan?</h2>
+    <h2 class="mt-5 text-3xl font-extrabold tracking-wide lg:text-5xl text-midnight-blue">🤔• Apa yang Bisa Anda Lakukan?</h2></div>
 </div>
 
-<div class="mt-[90px] flex flex-col lg:flex-row items-center justify-between text-center">
+<div class="mt-[90px] flex flex-col lg:flex-row items-center justify-between text-center  " data-aos="fade-up">
     <div class="flex flex-col items-center justify-center mb-20 lg:w-1/4 lg:mb-0">
         <div class="flex mb-7">
             <div class="p-6 drop-shadow-2xl rounded-3xl bg-dodger-blue">
@@ -83,6 +95,7 @@
             </div>
         </div>
         <div class="mb-3">
+            
             <h4 class="text-2xl font-bold text-midnight-blue">Cari Buku</h4>
         </div>
         <div>
@@ -135,13 +148,13 @@
 </div>
 
     {{-- Layanan --}}
-<div class="relative mt-[200px]">
+<div class="relative mt-[200px] " data-aos="fade-right">
     <div id="layanan" class="absolute left-0 p-6 -top-32 pb-[100px] bg-transparent"></div>
     <h3 class="text-base font-bold tracking-widest lg:text-lg text-dodger-blue">LAYANAN</h3>
     <h2 class="mt-5 text-3xl font-extrabold tracking-wide lg:text-5xl text-midnight-blue">🚀• Layanan untuk Anda</h2>
 </div>
 
-<div class="mt-[90px] grid grid-cols-1 lg:grid-cols-2">
+<div class="mt-[90px] grid grid-cols-1 lg:grid-cols-2" data-aos="fade-right">
     <div class="flex flex-col items-center justify-center lg:flex-row lg:items-start lg:justify-start order-first mb-12 lg:mb-0 drop-shadow-2xl transition-all duration-300 hover:drop-shadow-none">
         <img class="rounded-lg" src="{{ asset('assets/images/Service.png') }}" alt="Layanan">
     </div>
@@ -155,7 +168,7 @@
     </div>
 </div>
 
-<div class="mt-[140px] grid grid-cols-1 lg:grid-cols-2">
+<div class="mt-[140px] grid grid-cols-1 lg:grid-cols-2" data-aos="fade-left">
     <div class="lg:pe-[150px] text-center lg:text-start order-last lg:order-first">
         <h4 class="text-[32px] font-medium text-midnight-blue">Sewa Buku Cepat: <span
                 class="text-dodger-blue">Mendalami</span> Dunia <span class="text-dodger-blue">Literasi</span> dengan
@@ -174,20 +187,20 @@
 
     @auth
     {{-- Review --}}
-    <div class="relative mt-[200px]">
+    <div class="relative mt-[200px] " data-aos="fade-right">
         <div id="ulasan" class="absolute left-0 p-6 -top-32 pb-[100px] bg-transparent"></div>
         <h3 class="text-base font-bold tracking-widest lg:text-lg text-dodger-blue">ULASAN</h3>
         <h2 class="mt-5 text-3xl font-extrabold tracking-wide lg:text-5xl text-midnight-blue">💬• Ulasan Buku dari Orang Lain</h2>
     </div>
     @else
 
- <div class="relative mt-[200px]">
+ <div class="relative mt-[200px]" data-aos="fade-right">
     <div id="profil" class="absolute left-0 p-6 -top-32 pb-[100px] bg-transparent"></div>
     <h3 class="text-base font-bold tracking-widest lg:text-lg text-dodger-blue">Profil</h3>
     <h2 class="mt-5 text-3xl font-extrabold tracking-wide lg:text-5xl text-midnight-blue">💬• Profil sang author</h2>
 </div>
 @endauth
-    <div class="mt-[90px] lg:flex lg:items-center space-y-16 lg:space-y-0 lg:gap-x-14">
+    <div class="mt-[90px] lg:flex lg:items-center space-y-16 lg:space-y-0 lg:gap-x-14 " data-aos="fade-up">
         @auth
         @if ($reviews->count() >= 3)
             @foreach ($reviews as $review)
@@ -233,7 +246,7 @@
             @endauth
         @else
             <div
-                class="flex flex-col items-center justify-center flex-1 p-10 transition-all duration-300 bg-white border rounded-lg shadow-xl lg:w-1/4 hover:shadow-none border-pale-silver">
+                class="flex flex-col items-center justify-center flex-1 p-10 transition-all duration-300 bg-white border rounded-lg shadow-xl lg:w-1/4 hover:shadow-none border-pale-silver" data-aos="fade-up">
                 <div class="flex mb-4">
                     <div class="p-6 rounded-3xl">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMQfBTWtqsOWZteEOsuCyVK-sN1iiMoAhwKA&usqp=CAU" alt="hbtw hbtw">
@@ -255,14 +268,14 @@
     </div>
 
     {{-- Location --}}
-    <div class="relative mt-[200px]">
+    <div class="relative mt-[200px]" data-aos="fade-right">
         <div id="lokasi" class="absolute left-0 p-6 -top-32 pb-[100px] bg-transparent"></div>
         <h3 class="text-base font-bold tracking-widest lg:text-lg text-dodger-blue">LOKASI</h3>
         <h2 class="mt-5 text-3xl font-extrabold tracking-wide lg:text-5xl text-midnight-blue">🗺• Lokasi Perpustakaan Kami</h2>
     </div>
 
 
-    <div class="mt-[90px] flex items-center gap-x-14">
+    <div class="mt-[90px] flex items-center gap-x-14" data-aos="fade-up">
         <div
             class="flex flex-col items-center justify-center flex-1 w-1/4 transition-all duration-300 bg-white border rounded-lg shadow-xl hover:shadow-none border-pale-silver">
             <iframe
@@ -271,6 +284,9 @@
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
+    <script>   
+        AOS.init(); 
+   </script>
 @endsection
 
 @section('additional_scripts')
