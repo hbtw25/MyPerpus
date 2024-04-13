@@ -10,6 +10,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class MasterGenreController extends Controller
 {
@@ -59,6 +60,7 @@ class MasterGenreController extends Controller
         if ($theUser->role == "admin") {
             $credentials = $request->validate($this->rules);
             $credentials["created_by"] = $theUser->id_user;
+            $credentials["slug"] = Str::slug($credentials["nama"]); // Generate slug from nama
 
             Kategori::create($credentials);
             return redirect("/dashboard/genres")->withSuccess("The genre has been created!");
@@ -83,19 +85,20 @@ class MasterGenreController extends Controller
     }
 
     public function update(Request $request, Kategori $genre)
-    {
-        $theUser = Auth::user();
+{
+    $theUser = Auth::user();
 
-        if ($theUser->role == "admin") {
-            $credentials = $request->validate($this->rules);
-            $credentials["updated_by"] = $theUser->id_user;
+    if ($theUser->role == "admin") {
+        $credentials = $request->validate($this->rules);
+        $credentials["updated_by"] = $theUser->id_user;
+        $credentials["slug"] = Str::slug($credentials["nama"]); // Generate slug from nama
 
-            $genre->update($credentials);
-            return redirect("/dashboard/genres")->withSuccess("The genre has been updated!");
-        };
+        $genre->update($credentials);
+        return redirect("/dashboard/genres")->withSuccess("The genre has been updated!");
+    };
 
-        return view("errors.403");
-    }
+    return view("errors.403");
+}
 
     public function destroy(Kategori $genre)
     {

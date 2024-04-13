@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id("id_kategori");
             $table->string("nama", 50);
             $table->text("deskripsi");
-
+            $table->string("slug")->unique();
             $table->enum("flag_active", ["Y", "N"])->default("Y");
             $table->string("created_by")->nullable();
             $table->string("updated_by")->nullable();

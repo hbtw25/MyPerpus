@@ -18,11 +18,11 @@
                             </li>
                             <li
                                 class="text-base font-medium transition-all duration-300 md:text-sm hover:text-royal-blue @if (Request::is('books*')) text-dodger-blue @endif">
-                                <a href="/books">Buku</a>
+                                <a href="/buku">Buku</a>
                             </li>
                             <li
                                 class="text-base font-medium transition-all duration-300 md:text-sm hover:text-royal-blue @if (Request::is('genres*')) text-dodger-blue @endif">
-                                <a href="/genres">Kategori</a>
+                                <a href="/kategori">Kategori</a>
                             </li>
                         @else
                             <li class="text-base font-medium transition-all duration-300 md:text-sm hover:text-royal-blue">
@@ -62,10 +62,10 @@
                                 <div id="dropdownNavbar" class="z-10 hidden font-normal w-32 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none group-hover:block">
                                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                                       <li>
-                                        <a href="/books" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Buku</a>
+                                        <a href="/buku" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Buku</a>
                                       </li>
                                       <li>
-                                        <a href="/genres" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Kategori</a>
+                                        <a href="/kategori" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Kategori</a>
                                       </li>
                                       {{-- <li>
                                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Earnings</a>

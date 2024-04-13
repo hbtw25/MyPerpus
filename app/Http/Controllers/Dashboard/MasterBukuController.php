@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class MasterBukuController extends Controller
 {
@@ -84,20 +85,12 @@ class MasterBukuController extends Controller
         $theUser = Auth::user();
         $this->rules["year_published"][] = "max:" . now()->year;
 
-        if ($theUser->role == "admin") {
+        if ($theUser->role == "admin" || $theUser->role == "petugas") {
             $credentials = $request->validate($this->rules);
             $credentials["created_by"] = $theUser->id_user;
 
-            if ($request->has("cover")) $credentials["cover"] = $credentials["cover"]->store("book/covers");
-
-            $book = Buku::create($credentials);
-            $book->genres()->sync($credentials["genres"]);
-            return redirect("/dashboard/books")->withSuccess("The book has been created!");
-        };
-
-        if ($theUser->role == "petugas") {
-            $credentials = $request->validate($this->rules);
-            $credentials["created_by"] = $theUser->id_user;
+            // Generate slug
+            $credentials["slug"] = Str::slug($credentials["judul"]);
 
             if ($request->has("cover")) $credentials["cover"] = $credentials["cover"]->store("book/covers");
 
@@ -142,25 +135,14 @@ class MasterBukuController extends Controller
         $theUser = Auth::user();
         $this->rules["year_published"][] = "max:" . now()->year;
 
-        if ($theUser->role == "admin") {
+        if ($theUser->role == "admin" || $theUser->role == "petugas") {
             $credentials = $request->validate($this->rules);
             $credentials["updated_by"] = $theUser->id_user;
 
-            if ($request->has("cover")) {
-                if ($book->cover) Storage::delete($book->cover);
-                $credentials["cover"] = $credentials["cover"]->store("book/covers");
-            };
-
-            $book->update($credentials);
-            if (array_key_exists("genres", $credentials))
-                $book->genres()->sync($credentials["genres"]);
-
-            return redirect("/dashboard/books")->withSuccess("The book has been updated!");
-        };
-
-        if ($theUser->role == "petugas") {
-            $credentials = $request->validate($this->rules);
-            $credentials["updated_by"] = $theUser->id_user;
+            // Update slug if judul changes
+            if ($request->has("judul") && $request->judul !== $book->judul) {
+                $credentials["slug"] = Str::slug($credentials["judul"]);
+            }
 
             if ($request->has("cover")) {
                 if ($book->cover) Storage::delete($book->cover);

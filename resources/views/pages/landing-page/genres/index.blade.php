@@ -84,7 +84,7 @@
                                     <div class="flex flex-wrap items-center -mx-4">
                                         <div class="w-full px-4 lg:w-9/12">
                                             <div class="text-2xl font-semibold">
-                                                <a href="/books?genre={{ $genre->id_kategori }}">
+                                                <a href="/buku?genre={{ $genre->id_kategori }}">
                                                     <h2
                                                         class="transition-all duration-300 text-midnight-blue hover:text-midnight-blue/60">
                                                         {{ $genre->nama }}
@@ -98,7 +98,7 @@
                                             <div class="text-2xl font-semibold">{{ $genre->books->count() }} 📚</div>
 
                                             <a class="inline-flex items-center justify-center h-10 px-4 py-3 font-medium text-center transition-colors duration-300 border-2 border-transparent rounded-md disabled:pointer-events-none disabled:opacity-80 bg-dodger-blue/10 text-dodger-blue hover:bg-dodger-blue/20 lg:mt-4"
-                                                href="/books?genre={{ $genre->id_kategori }}">Search</a>
+                                                href="/buku?genre={{ $genre->id_kategori }}">Search</a>
                                         </div>
                                     </div>
                                 </div>

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Buku;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str; // Import Str class for slug
 
 class BukuSeeder extends Seeder
 {
@@ -15,8 +16,8 @@ class BukuSeeder extends Seeder
     {
         Buku::insert([
             [
-                "id_buku" => 1,
                 "judul" => "Dompet Ayah Sepatu Ibu",
+                "slug" => Str::slug("Dompet Ayah Sepatu Ibu"), // Generate slug
                 "penulis" => "J. S. Khairen",
                 "penerbit" => "Gramedia Widia Sarana Indonesia",
                 "tahun_terbit" => "2023",
@@ -27,8 +28,8 @@ class BukuSeeder extends Seeder
                 "created_at" => now(),
             ],
             [
-                "id_buku" => 2,
                 "judul" => "Laut Bercerita",
+                "slug" => Str::slug("Laut Bercerita"), // Generate slug
                 "penulis" => "Leila S. Chudori",
                 "penerbit" => "Penerbit KPG",
                 "tahun_terbit" => "2017",
@@ -39,8 +40,8 @@ class BukuSeeder extends Seeder
                 "created_at" => now(),
             ],
             [
-                "id_buku" => 3,
                 "judul" => "Talking to Strangers",
+                "slug" => Str::slug("Talking to Strangers"), // Generate slug
                 "penulis" => "Malcolm Gladwell",
                 "penerbit" => "Penguin Books",
                 "tahun_terbit" => "2019",
@@ -51,8 +52,8 @@ class BukuSeeder extends Seeder
                 "created_at" => now(),
             ],
             [
-                "id_buku" => 4,
                 "judul" => "The Visual MBA",
+                "slug" => Str::slug("The Visual MBA"), // Generate slug
                 "penulis" => "Jason Barron",
                 "penerbit" => "Penguin Books",
                 "tahun_terbit" => "2019",

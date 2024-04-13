@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="inline-flex items-center">
-                <a href="/books"
+                <a href="/buku"
                     class="inline-flex items-center text-sm font-medium transition-all duration-300 text-midnight-blue hover:text-dodger-blue">
                     <svg class="w-3 h-3 mx-1 text-gray-400 rtl:rotate-180" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
@@ -123,7 +123,7 @@
 
                     <p class="font-semibold text-midnight-blue">Genre:
                         @foreach ($book->genres as $genre)
-                            <a href="/books?genre={{ $genre->id_kategori }}">
+                            <a href="/buku?genre={{ $genre->id_kategori }}">
                                 <span
                                     class="transition-all duration-300 hover:bg-dodger-blue hover:text-white bg-blue-100 text-dodger-blue text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 inline-block mb-2">{{ $genre->nama }}</span>
                             </a>
@@ -174,7 +174,7 @@
                             {{ auth()->user()->nama_lengkap }}</h3>
 
                         @if(!$book->reviews()->where('id_user', auth()->user()->id_user)->exists())
-                            <form class="mt-8" action="/books/{{ $book->id_buku }}/reviewed" method="POST"
+                            <form class="mt-8" action="/buku/{{ $book->slug }}/reviewed" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
 

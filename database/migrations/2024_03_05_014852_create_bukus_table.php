@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text("synopsis");
             $table->string("cover")->nullable();
             $table->unsignedBigInteger("stock");
-
+            $table->string("slug")->unique();
             $table->string("created_by")->nullable();
             $table->string("updated_by")->nullable();
             $table->timestamps();

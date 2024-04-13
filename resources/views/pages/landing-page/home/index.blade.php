@@ -9,7 +9,7 @@
     {{-- Cover --}}
     <section class="hidden xl:block">
         {{-- Down Shape --}}
-        
+
         <div class="absolute right-0 -top-[7%] drop-shadow-2xl">
             <img id="down-shape" src="{{ asset('assets/shapes/down-shape.png') }}" alt="Down Shape">
         </div>
@@ -29,7 +29,7 @@
             <h1 class="text-3xl font-extrabold xl:leading-[98px] xl:text-7xl text-center xl:text-start text-midnight-blue">
                 Cari & tinjau
                 buku <span class="underline text-dodger-blue">favoritmu</span> dengan mudah</h1></div>
-              
+
 <div data-aos="fade-up">
             <p class="mt-10 leading-8 text-center xl:text-start xl:w-3/4 text-slate-grey">Mulailah perjalanan literatur seperti
                 belum pernah ada sebelumnya
@@ -37,7 +37,7 @@
                 perpustakaan revolusioner kami! Memperkenalkan pengalaman yang mulus
                 yang melampaui batas-batas tradisional, di mana Anda
                 dapat dengan mudah mencari buku favorit Anda.✨</p></div>
-                
+
             <div class="flex justify-center mt-16 xl:block">
                 <div data-aos="fade-up">     <a href="{{ auth()->check() ? '/dashboard' : '/login' }}"
                     class="px-12 py-5 font-bold text-white transition-all duration-300 rounded-xl drop-shadow-2xl hover:bg-blue-700 hover:drop-shadow-none bg-dodger-blue">Mulai
@@ -95,7 +95,7 @@
             </div>
         </div>
         <div class="mb-3">
-            
+
             <h4 class="text-2xl font-bold text-midnight-blue">Cari Buku</h4>
         </div>
         <div>
@@ -204,7 +204,7 @@
         @auth
         @if ($reviews->count() >= 3)
             @foreach ($reviews as $review)
-                <div  style="cursor: pointer" onclick="window.location.href='/books/{{ $review->book->id_buku }}'"
+                <div  style="cursor: pointer" onclick="window.location.href='/buku/{{ $review->book->slug }}'"
                     class="flex flex-col items-center justify-center flex-1 p-10 transition-all duration-300 bg-white border rounded-lg shadow-xl lg:w-1/4 hover:shadow-none border-pale-silver">
                     <div class="flex mb-4">
                         <div class="p-6 rounded-3xl">
@@ -284,8 +284,8 @@
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
-    <script>   
-        AOS.init(); 
+    <script>
+        AOS.init();
    </script>
 @endsection
 

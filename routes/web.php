@@ -29,15 +29,15 @@ Route::post('/register', [RegisterController::class, "register"]);
 
 // Landing Page
 // Book
-Route::get('/books', [BukuController::class, "index"]);
-Route::get('/books/{book:id_buku}', [BukuController::class, "show"]);
-Route::post('/books/{book:id_buku}/reviewed', [BukuController::class, "reviewed"]);
+Route::get('/buku', [BukuController::class, "index"]);
+Route::get('/buku/{book:slug}', [BukuController::class, "show"])->where('slug', '[\w\d\-\_]+');
+Route::post('/buku/{book:slug}/reviewed', [BukuController::class, "reviewed"]);
 
 // Wishlist
-Route::post('/books/{book:id_buku}/wishlist', [BukuController::class, "wishlist"]);
+Route::post('/buku/{book:slug}/wishlist', [BukuController::class, "wishlist"]);
 
 // Genre
-Route::get('/genres', [GenreController::class, "index"]);
+Route::get('/kategori', [GenreController::class, "index"]);
 
 // Dashboard
 Route::group(['prefix' => "dashboard", "middleware" => ["auth"]], function () {

@@ -70,7 +70,7 @@ class BukuController extends Controller
 
          // Check if the user has already reviewed the book
          if ($book->reviews()->where('id_user', $user->id_user)->exists()) {
-             return redirect("/books/{$book->id_buku}")->withError("You have already reviewed this book!");
+             return redirect("/buku/{$book->slug}")->withError("You have already reviewed this book!");
          }
 
          $credentials = $request->validate([
@@ -84,7 +84,7 @@ class BukuController extends Controller
 
          $book->reviews()->create($credentials);
 
-         return redirect("/books/{$book->id_buku}")->withSuccess("Your review has been posted!");
+         return redirect("/buku/{$book->slug}")->withSuccess("Your review has been posted!");
      }
 
 }

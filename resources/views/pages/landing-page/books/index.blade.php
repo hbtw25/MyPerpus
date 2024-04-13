@@ -45,7 +45,7 @@
 
         <section class="pt-20">
             <div class="flex flex-col items-start justify-center w-full mb-8 gap-y-6">
-                <form class="flex items-center justify-center w-full" action="/books" method="GET">
+                <form class="flex items-center justify-center w-full" action="/buku" method="GET">
                     @if (request('penulis'))
                         <input type="hidden" name="penulis" value="{{ request('penulis') }}">
                     @elseif(request('judul'))
@@ -95,7 +95,7 @@
                         class="p-6 transition-colors border-t-2 shadow-2xl bg-white/60 hover:bg-white rounded-xl shadow-dodger-blue/20 border-t-dodger-blue">
                         <div class="flex flex-wrap items-start -mx-4 lg:items-center">
                             <div class="flex-shrink-0 w-full px-4 mb-6 md:w-5/12 lg:w-3/12 md:mb-0">
-                                <a class="relative inline-block w-full" href="/books/{{ $book->id_buku }}">
+                                <a class="relative inline-block w-full" href="/buku/{{ $book->id_buku }}">
                                     @if ($book->cover)
                                         @if (File::exists(public_path('assets/' . $book->cover)))
                                             <img src="{{ asset('assets/' . $book->cover) }}" alt="{{ $book->judul }}"
@@ -117,7 +117,7 @@
                                 <div class="flex flex-wrap items-center -mx-4">
                                     <div class="w-full px-4 lg:w-9/12">
                                         <div class="text-2xl font-semibold">
-                                            <a href="/books/{{ $book->id_buku }}">
+                                            <a href="/buku/{{ $book->id_buku }}">
                                                 <h2
                                                     class="transition-all duration-300 text-midnight-blue hover:text-midnight-blue/60">
                                                     {{ $book->judul }}
@@ -169,7 +169,7 @@
 
                                             <div class="mt-8">
                                                 @foreach ($book->genres as $genre)
-                                                    <a href="/books?genre={{ $genre->id_kategori }}">
+                                                    <a href="/buku?genre={{ $genre->id_kategori }}">
                                                         <span
                                                             class="transition-all duration-300 hover:bg-dodger-blue hover:text-white bg-blue-100 text-dodger-blue text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 inline-block mb-2">{{ $genre->nama }}</span>
                                                     </a>
@@ -179,7 +179,7 @@
                                     </div>
                                     <div class="flex items-center justify-between w-full px-4 mt-8 lg:w-3/12 lg:border-l lg:border-dark/5 lg:ml-auto lg:py-10 lg:text-center lg:block lg:mt-0">
                                         @auth
-                                            <form action="/books/{{ $book->id_buku }}/wishlist" method="POST">
+                                            <form action="/buku/{{ $book->id_buku }}/wishlist" method="POST">
                                                 @csrf
                                                 <button type="submit">
                                                     <div class="text-2xl font-semibold">
@@ -200,7 +200,7 @@
                                         @guest
                                             <a class="inline-flex items-center justify-center h-10 px-4 py-3 font-medium text-center transition-colors duration-300 border-2 border-transparent rounded-md disabled:pointer-events-none disabled:opacity-80 bg-dodger-blue/10 text-dodger-blue hover:bg-dodger-blue/20 lg:mt-4" href="{{ route('login') }}">See Details</a>
                                         @else
-                                            <a class="inline-flex items-center justify-center h-10 px-4 py-3 font-medium text-center transition-colors duration-300 border-2 border-transparent rounded-md disabled:pointer-events-none disabled:opacity-80 bg-dodger-blue/10 text-dodger-blue hover:bg-dodger-blue/20 lg:mt-4" href="/books/{{ $book->id_buku }}">See Details</a>
+                                            <a class="inline-flex items-center justify-center h-10 px-4 py-3 font-medium text-center transition-colors duration-300 border-2 border-transparent rounded-md disabled:pointer-events-none disabled:opacity-80 bg-dodger-blue/10 text-dodger-blue hover:bg-dodger-blue/20 lg:mt-4" href="/buku/{{ $book->slug }}">See Details</a>
                                         @endguest
                                     </div>
                                 </div>
