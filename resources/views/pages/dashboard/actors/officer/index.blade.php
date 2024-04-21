@@ -70,7 +70,7 @@
                                         </div>
                                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                             <h6 class="font-semibold text-muted">
-                                                Officer
+                                                Petugas
                                             </h6>
                                             <h6 class="mb-0 font-extrabold">
                                                 {{ $officersCount }}
@@ -93,7 +93,7 @@
                                         </div>
                                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                             <h6 class="font-semibold text-muted">
-                                                Reader
+                                                Peminjam
                                             </h6>
                                             <h6 class="mb-0 font-extrabold">
                                                 {{ $readersCount }}
@@ -116,7 +116,7 @@
                                         </div>
                                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                             <h6 class="font-semibold text-muted">
-                                                Receipt
+                                                Peminjaman
                                             </h6>
                                             <h6 class="mb-0 font-extrabold">
                                                 {{ $receiptsCount }}
@@ -139,7 +139,7 @@
                                         </div>
                                         <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
                                             <h6 class="font-semibold text-muted">
-                                                Review
+                                                Ulasan
                                             </h6>
                                             <h6 class="mb-0 font-extrabold">
                                                 {{ $reviewsCount }}
@@ -155,7 +155,7 @@
             <div class="col-12 col-lg-3">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="text-center">New Receipt</h4>
+                        <h4 class="text-center">Peminjaman Terbaru</h4>
                     </div>
                     <div class="pb-4 card-content">
                         @forelse ($receipts as $receipt)
@@ -195,25 +195,25 @@
                                                 data-bs-dismiss="modal"></span>
                                         </div>
                                         <div class="modal-body">
-                                            <p><span class="fw-bold">Reader</span>:
+                                            <p><span class="fw-bold">Peminjam</span>:
                                                 {{ $receipt->user->nama_lengkap }}</p>
-                                            <p><span class="fw-bold">Book</span>:
+                                            <p><span class="fw-bold">Buku</span>:
                                                 {{ $receipt->book->judul }}</p>
-                                            <p><span class="fw-bold">Amount</span>:
+                                            <p><span class="fw-bold">Jumlah</span>:
                                                 {{ $receipt->jumlah }}</p>
-                                            <p><span class="fw-bold">From time</span>:
-                                                {{ $receipt->tanggal_peminjaman->format('j F Y') }}</p>
-                                            <p><span class="fw-bold">To time</span>:
-                                                {{ $receipt->tanggal_pengembalian->format('j F Y') }}</p>
-                                            <p><span class="fw-bold">Time range</span>:
-                                                {{ $receipt->tanggal_peminjaman->diff($receipt->tanggal_pengembalian)->format('%a') }}
-                                                day(s)
-                                            </p>
+                                                <p><span class="fw-bold">Dari Tanggal</span>:
+                                                    {{ $receipt->tanggal_peminjaman->format('j F Y') }}</p>
+                                                <p><span class="fw-bold">Sampai Tanggal</span>:
+                                                    {{ $receipt->tanggal_pengembalian->format('j F Y') }}</p>
+                                                <p><span class="fw-bold">Jangka Waktu</span>:
+                                                    {{ $receipt->tanggal_peminjaman->diff($receipt->tanggal_pengembalian)->format('%a') }}
+                                                   Hari
+                                                </p>
                                             <p><span class="fw-bold">Status</span>:
                                                 {{ Str::title($receipt->status) }}</p>
 
                                             @if ($receipt->status === 'dikembalikan')
-                                                <p><span class="fw-bold">Returned at</span>:
+                                                <p><span class="fw-bold">Dikembalikan pada</span>:
                                                     {{ $receipt->tanggal_dikembalikan->format('j F Y') }}</p>
                                             @endif
                                         </div>
@@ -230,7 +230,7 @@
                         @empty
                             <div class="px-4 py-3 recent-message d-flex">
                                 <div class="alert alert-warning w-100" role="alert">
-                                    <h4 class="alert-heading text-center">No receipt :(</h4>
+                                    <h4 class="alert-heading text-center">Tidak Ada Peminjaman :(</h4>
                                 </div>
                             </div>
                         @endforelse
@@ -240,11 +240,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">New Review</h3>
+                        <h3 class="card-title">Ulasan Terbaru</h3>
                     </div>
                     <div class="card-body">
                         @forelse ($reviews as $review)
-                            <a class="text-muted" href="/books/{{ $review->book->id_buku }}">
+                            <a class="text-muted" href="/buku/{{ $review->book->slug }}">
                                 <div class="px-4 mb-1">
                                     <div class="p-4 px-0 pb-0">
                                         <div class="d-flex">
@@ -299,8 +299,7 @@
                                                         <div class="attachment-file-footer">
                                                             <a href="{{ asset("storage/$review->photo") }}"
                                                                 target="_blank" class="btn btn-primary">
-                                                                <i class="far fas fa-box-open me-2"></i> Open it
-                                                                up!
+                                                                <i class="far fas fa-box-open me-2"></i> Buka ini!
                                                             </a>
                                                         </div>
                                                     </div>
@@ -313,8 +312,8 @@
                             </a>
                         @empty
                             <div class="alert alert-warning" role="alert">
-                                <h4 class="alert-heading">No reviews :(</h4>
-                                <p>There is no review.</p>
+                                <h4 class="alert-heading">Gak ada Ulasan :(</h4>
+                                <p>Tidak ada ulasan.</p>
                             </div>
                         @endforelse
                     </div>

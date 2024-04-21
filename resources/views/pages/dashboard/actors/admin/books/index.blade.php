@@ -11,12 +11,12 @@
     <div class="page-title">
         <div class="row">
             <div class="order-last col-12 col-md-6 order-md-1">
-                <h3>Book</h3>
-                <p class="text-subtitle text-muted">Manage the books in the library.</p>
+                <h3>Buku</h3>
+                <p class="text-subtitle text-muted">Kelola buku-buku di perpustakaan.</p>
                 <hr>
                 <div class="mb-4">
                     <a href="/dashboard/books/create" class="px-2 pt-2 btn btn-success me-1">
-                        <span class="text-white select-all fa-fw fa-lg fas"></span> Create Book
+                        <span class="text-white select-all fa-fw fa-lg fas"></span> Buat Buku
                     </a>
                 </div>
             </div>
@@ -24,7 +24,7 @@
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Book</li>
+                        <li class="breadcrumb-item active" aria-current="page">Buku</li>
                     </ol>
                 </nav>
             </div>
@@ -34,7 +34,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex flex-column flex-md-row justify-content-between" style="row-gap: 1rem;">
-                    <h4>Book</h4>
+                    <h4>Buku</h4>
 
                     <div class="mb-3 dropdown dropdown-color-icon d-flex justify-content-start">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="export"
@@ -86,14 +86,14 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Title</th>
-                            <th>Author</th>
-                            <th>Publisher</th>
-                            <th>Year</th>
+                            <th>Judul</th>
+                            <th>Penulis</th>
+                            <th>Penerbit</th>
+                            <th>Tahun Terbit</th>
                             <th>Genre</th>
                             <th>Stock</th>
-                            <th>Wishlist</th>
-                            <th>Review</th>
+                            <th>Koleksi pribadi</th>
+                            <th>Ulasan</th>
                             <th>Created</th>
                             <th>Action</th>
                         </tr>
@@ -146,7 +146,7 @@
                         @empty
                             <tr>
                                 <td colspan="11">
-                                    <p class="pt-3 text-center">Nothing :(</p>
+                                    <p class="pt-3 text-center">Gak ada :(</p>
                                 </td>
                             </tr>
                         @endforelse

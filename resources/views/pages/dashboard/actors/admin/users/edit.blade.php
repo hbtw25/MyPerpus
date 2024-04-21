@@ -146,6 +146,14 @@
                                                     petugas
                                                 </label>
                                             </div>
+                                            <div class="form-check me-3">
+                                                <input class="form-check-input" type="radio" name="role"
+                                                    @if (old('role') ?? $user->role === 'admin') checked @endif id="role-admin"
+                                                    value="admin">
+                                                <label class="form-check-label form-label" for="role-admin">
+                                                    admin
+                                                </label>
+                                            </div>
                                         </div>
                                     </fieldset>
 

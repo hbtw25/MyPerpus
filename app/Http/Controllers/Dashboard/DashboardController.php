@@ -24,10 +24,10 @@ class DashboardController extends Controller
 
         $greeting = "";
         $time = now()->hour;
-        if ($time >= 6 && $time <= 11) $greeting = "Good morning";
-        else if ($time >= 12 && $time <= 14) $greeting = "Good afternoon";
-        else if ($time >= 15 && $time <= 18) $greeting = "Good evening";
-        else $greeting = "Good night";
+        if ($time >= 6 && $time <= 11) $greeting = "Selamat Pagi";
+        else if ($time >= 12 && $time <= 14) $greeting = "Selamat Siang";
+        else if ($time >= 15 && $time <= 18) $greeting = "Selamat Sore";
+        else $greeting = "Selamat Malam";
 
         // Admin
         if ($theUser->role === "admin") {

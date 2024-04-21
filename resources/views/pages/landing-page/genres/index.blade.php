@@ -105,7 +105,7 @@
                             </div>
                         </div>
                     @empty
-                        <p class="text-xl font-extrabold text-center">Nothing :(</p>
+                        <p class="text-xl font-extrabold text-center">Gak ada :(</p>
                     @endforelse
                 </div>
             </div>

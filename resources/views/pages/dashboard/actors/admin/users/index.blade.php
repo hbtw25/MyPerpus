@@ -183,7 +183,7 @@
                         @empty
                             <tr>
                                 <td colspan="8">
-                                    <p class="pt-3 text-center">Nothing :(</p>
+                                    <p class="pt-3 text-center">Gak ada :(</p>
                                 </td>
                             </tr>
                         @endforelse

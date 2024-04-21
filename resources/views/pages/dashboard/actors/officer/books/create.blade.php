@@ -6,23 +6,24 @@
     @include('utils.quill.link')
     @include('utils.filepond.link')
     @include('utils.choices.link')
+    @include('sweetalert::alert')
 @endsection
 
 @section('content')
     <div class="page-title">
         <div class="row">
             <div class="order-last col-12 col-md-6 order-md-1">
-                <h3>Create Book</h3>
+                <h3>Buat Buku</h3>
                 <p class="text-subtitle text-muted">
-                    Create a new book in the library.
+                    Buat buku baru di perpustakaan.
                 </p>
             </div>
             <div class="order-first col-12 col-md-6 order-md-2">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="/dashboard/books">Book</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Create</li>
+                        <li class="breadcrumb-item"><a href="/dashboard/books">Buku</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Buat</li>
                     </ol>
                 </nav>
             </div>
@@ -34,6 +35,11 @@
                 <h4 class="card-title">Book</h4>
             </div>
             <div class="card-body">
+                @if ($errors->has('slug_error'))
+                <div class="alert alert-danger">
+                    {{ $errors->first('slug_error') }}
+                </div>
+            @endif
                 <form class="form" action="/dashboard/books" method="POST" enctype="multipart/form-data">
                     @csrf
 
@@ -98,7 +104,7 @@
                         <div class="mb-1 col-md-6 col-12">
                             <div
                                 class="form-group has-icon-left mandatory @error('tahun_terbit'){{ 'is-invalid' }}@enderror">
-                                <label for="tahun_terbit" class="form-label">Year</label>
+                                <label for="tahun_terbit" class="form-label">Tahun Terbit</label>
                                 <div class="position-relative">
                                     <input type="text" class="py-2 form-control" id="tahun_terbit"
                                         name="tahun_terbit" value="{{ old('tahun_terbit') }}" placeholder="e.g. 2020"
@@ -142,7 +148,7 @@
                                 <div class="position-relative">
                                     <select id="genres" class="choices form-select multiple-remove"
                                         multiple="multiple" name="genres[]">
-                                        <option placeholder>Please pick the genre ...</option>
+                                        <option placeholder>Silakan pilih genrenya...</option>
 
                                         @foreach ($genres as $genre)
                                             <option value="{{ $genre->id_kategori }}"

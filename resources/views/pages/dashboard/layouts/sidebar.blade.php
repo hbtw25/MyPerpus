@@ -5,7 +5,7 @@
                 <div class="logo">
                     <a href="/">
                         <img class="px-2" style="width: 75%; height: 75%;"
-                            src="{{ asset('assets/logo/high-resolutions/Tyzals-logo-text-linear.png') }}" alt="Logo">
+                            src="{{ asset('https://www.smknegeri1garut.sch.id/tampilan/img/logo.png') }}" alt="Logo">
                     </a>
                 </div>
                 <div class="gap-2 mt-2 theme-toggle d-flex align-items-center">
@@ -56,14 +56,14 @@
                 </li>
 
                 <li class="sidebar-title">Menu</li>
-                @can('admin')
+                @canany(['admin', 'petugas'])
                     <li class="sidebar-item @if (Request::is('dashboard/genres*')) active @endif">
                         <a href="/dashboard/genres" class='sidebar-link'>
                             <i class="bi bi-book-half"></i>
                             <span>Kategori</span>
                         </a>
                     </li>
-                @endcan
+                @endcanany
 
                 @canany(['admin', 'petugas'])
                     <li class="sidebar-item @if (Request::is('dashboard/books*')) active @endif">

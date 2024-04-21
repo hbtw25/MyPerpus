@@ -57,6 +57,6 @@ class RegisterController extends Controller
         $user->update(["created_by" => $user->id_user]);
 
         Auth::login($user);
-        return redirect()->intended('/dashboard')->withSuccess("Account has been created!");
+        return redirect()->intended('/dashboard')->withSuccess("Akun telah dibuat!");
     }
 }

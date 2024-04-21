@@ -8,8 +8,8 @@ document.documentElement.addEventListener("click", function (event) {
         handleClick({
             data: { unique },
             event: {
-                noun: "receipt",
-                verb: "mark as returned",
+                noun: "Peminjaman",
+                verb: "tandai sebagai dikembalikan",
                 method: "PUT",
             },
             uri: "/dashboard/receipts/returned",

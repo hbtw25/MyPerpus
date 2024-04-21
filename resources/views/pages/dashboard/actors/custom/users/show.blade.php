@@ -85,7 +85,7 @@
 
                         <div class="col-12 col-md-6">
                             <div class="font-bold">
-                               <p>Address:
+                               <p>Alamat:
                                 <span style="font-weight: 400;" class="text-muted">
                                     {{ $user->alamat }}
                                 </span>

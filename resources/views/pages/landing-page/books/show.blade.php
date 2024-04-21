@@ -117,7 +117,7 @@
                         @endfor
 
                         <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">{{ number_format($average_rating, 2) }}</p>
-                        <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">out of</p>
+                        <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">dari </p>
                         <p class="ms-1 text-sm font-medium text-gray-500 dark:text-gray-400">5</p>
                     </div>
 
@@ -231,7 +231,7 @@
                                 </div>
                             </form>
                         @else
-                            <p class="mt-4 text-sm text-gray-600">You have already reviewed this book.</p>
+                            <p class="mt-4 text-sm text-gray-600">Anda sudah mengulas buku ini.</p>
                         @endif
                     </div>
                 </div>

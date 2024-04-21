@@ -12,16 +12,16 @@
     <div class="page-title">
         <div class="row">
             <div class="order-last col-12 col-md-6 order-md-1">
-                <h3>Update Book</h3>
+                <h3>Update Buku</h3>
                 <p class="text-subtitle text-muted">
-                    Update the book in the library.
+                    Perbarui buku di perpustakaan.
                 </p>
             </div>
             <div class="order-first col-12 col-md-6 order-md-2">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="/dashboard/books">Book</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboard/books">Buku</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Update</li>
                     </ol>
                 </nav>
@@ -31,9 +31,14 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Book</h4>
+                <h4 class="card-title">Buku</h4>
             </div>
             <div class="card-body">
+                @if ($errors->has('slug_error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ $errors->first('slug_error') }}
+                </div>
+            @endif
                 <form class="form" action="/dashboard/books/{{ $book->id_buku }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
@@ -42,7 +47,7 @@
                     <div class="row">
                         <div class="mb-1 col-md-6 col-12">
                             <div class="form-group has-icon-left mandatory @error('judul'){{ 'is-invalid' }}@enderror">
-                                <label for="judul" class="form-label">judul</label>
+                                <label for="judul" class="form-label">Judul</label>
                                 <div class="position-relative">
                                     <input type="text" class="py-2 form-control" placeholder="e.g. The Midnight Library"
                                         id="judul" name="judul" value="{{ old('judul') ?? $book->judul }}" />
@@ -101,7 +106,7 @@
                         <div class="mb-1 col-md-6 col-12">
                             <div
                                 class="form-group has-icon-left mandatory @error('tahun_terbit'){{ 'is-invalid' }}@enderror">
-                                <label for="tahun_terbit" class="form-label">Year</label>
+                                <label for="tahun_terbit" class="form-label">Tahun Terbit</label>
                                 <div class="position-relative">
                                     <input type="text" class="py-2 form-control" id="tahun_terbit"
                                         name="tahun_terbit" value="{{ old('tahun_terbit') ?? $book->tahun_terbit }}"
@@ -145,7 +150,7 @@
                                 <div class="position-relative">
                                     <select id="genres" class="choices form-select multiple-remove"
                                         multiple="multiple" name="genres[]">
-                                        <option placeholder>Please pick the genre ...</option>
+                                        <option placeholder>Silakan pilih genrenya...</option>
 
                                         @foreach ($genres as $genre)
                                             <option value="{{ $genre->id_kategori }}"
@@ -191,7 +196,7 @@
                         <div class="mb-1 col-12">
                             <div class="form-group mandatory @error('synopsis'){{ 'is-invalid' }}@enderror">
                                 <div class="position-relative">
-                                    <label class="form-label">Synopsis</label>
+                                    <label class="form-label">synopsis</label>
 
                                     <input id="synopsis" name="synopsis"
                                         value="{{ old('synopsis') ?? $book->synopsis }}" type="hidden">

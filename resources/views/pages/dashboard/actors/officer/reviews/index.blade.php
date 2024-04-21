@@ -29,7 +29,7 @@
     </div>
 
     {{-- Your Review --}}
-    <section class="section">
+    {{-- <section class="section">
         <div class="card">
             <div class="card-header">
                 <div class="d-flex flex-column flex-md-row justify-content-between" style="row-gap: 1rem;">
@@ -135,7 +135,7 @@
                         @empty
                             <tr>
                                 <td colspan="5">
-                                    <p class="pt-3 text-center">Nothing :(</p>
+                                    <p class="pt-3 text-center">Gak ada :(</p>
                                 </td>
                             </tr>
                         @endforelse
@@ -143,7 +143,7 @@
                 </table>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     {{-- All Review --}}
     <section class="section">
@@ -249,7 +249,7 @@
                                         @endif
 
                                         <div class="me-2">
-                                            <a href="/books/{{ $review->book->id_buku }}" class="px-2 pt-2 btn btn-info">
+                                            <a href="/buku/{{ $review->book->slug }}" class="px-2 pt-2 btn btn-info">
                                                 <span class="select-all fa-fw fa-lg fas"></span>
                                             </a>
                                         </div>
@@ -259,7 +259,7 @@
                         @empty
                             <tr>
                                 <td colspan="6">
-                                    <p class="pt-3 text-center">Nothing :(</p>
+                                    <p class="pt-3 text-center">Gak ada :(</p>
                                 </td>
                             </tr>
                         @endforelse

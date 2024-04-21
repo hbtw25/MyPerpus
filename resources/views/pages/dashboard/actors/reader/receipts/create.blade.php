@@ -11,16 +11,16 @@
     <div class="page-title">
         <div class="row">
             <div class="order-last col-12 col-md-6 order-md-1">
-                <h3>Create Receipt</h3>
+                <h3>Buat Peminjaman</h3>
                 <p class="text-subtitle text-muted">
-                    Create a new receipt for readers who want to read a book and bring it back later.
+                    Buat Peminjaman baru untuk pembaca yang ingin membaca buku dan membawanya kembali nanti.
                 </p>
             </div>
             <div class="order-first col-12 col-md-6 order-md-2">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="/dashboard/receipts">Receipt</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboard/receipts">Peminjaman</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Create</li>
                     </ol>
                 </nav>
@@ -30,7 +30,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Receipt</h4>
+                <h4 class="card-title">Peminjaman</h4>
             </div>
             <div class="card-body">
                 <form class="form" action="/dashboard/receipts" method="POST">
@@ -59,10 +59,10 @@
 
                         <div class="mb-1 col-md-6 col-12">
                             <div class="form-group has-icon-left mandatory @error('id_buku'){{ 'is-invalid' }}@enderror">
-                                <label for="book" class="form-label">Book</label>
+                                <label for="book" class="form-label">Buku</label>
                                 <div class="position-relative">
                                     <select id="book" class="choices form-select" name="id_buku">
-                                        <option placeholder>Please pick the book ...</option>
+                                        <option placeholder>Silakan pilih bukunya...</option>
                                         @foreach ($books as $book)
                                             <option value="{{ $book->id_buku }}"
                                                 @if (old('id_buku') == $book->id_buku) selected @elseif ($book->id_buku == $id_buku) selected @endif>{{ $book->judul }}
@@ -82,7 +82,7 @@
 
                         <div class="mb-1 col-12">
                             <div class="form-group has-icon-left mandatory @error('jumlah'){{ 'is-invalid' }}@enderror">
-                                <label for="jumlah" class="form-label">jumlah</label>
+                                <label for="jumlah" class="form-label">Jumlah</label>
                                 <div class="position-relative">
                                     <input type="text" class="py-2 form-control" id="jumlah" name="jumlah"
                                         value="{{ old('jumlah') }}" placeholder="e.g. 5" min="0" max="5"
@@ -103,10 +103,10 @@
                         <div class="mb-1 col-md-6 col-12">
                             <div
                                 class="form-group has-icon-left mandatory @error('tanggal_peminjaman'){{ 'is-invalid' }}@enderror">
-                                <label for="tanggal_peminjaman" class="form-label">From</label>
+                                <label for="tanggal_peminjaman" class="form-label">Dari Tanggal</label>
                                 <div class="position-relative">
                                     <input name="tanggal_peminjaman" id="tanggal_peminjaman" type="date"
-                                        class="mb-2 form-control flatpickr-from" placeholder="Select date ..."
+                                        class="mb-2 form-control flatpickr-from" placeholder="Pilih tanggal ..."
                                         value="{{ old('tanggal_peminjaman') ?? date('Y-m-d') }}">
                                     <div class="form-control-icon">
                                         <i class="py-2 bi bi-calendar-day"></i>
@@ -123,10 +123,10 @@
 
                         <div class="mb-1 col-md-6 col-12">
                             <div class="form-group has-icon-left mandatory @error('tanggal_pengembalian'){{ 'is-invalid' }}@enderror">
-                                <label for="tanggal_pengembalian" class="form-label">To</label>
+                                <label for="tanggal_pengembalian" class="form-label">Sampai Tanggal</label>
                                 <div class="position-relative">
                                     <input name="tanggal_pengembalian" id="tanggal_pengembalian" type="date"
-                                        class="mb-2 form-control flatpickr-to" placeholder="Select date ..."
+                                        class="mb-2 form-control flatpickr-to" placeholder="Pilih tanggal ..."
                                         value="{{ old('tanggal_pengembalian') }}">
                                     <div class="form-control-icon">
                                         <i class="py-2 bi bi-calendar-check"></i>

@@ -1,12 +1,12 @@
 export function handleClick({ data, event, uri, redirect = uri }) {
     const config = {
-        title: "Are you sure?",
-        text: `You will ${event.verb} this ${event.noun}.`,
+        title: "Apa kamu yakin?",
+        text: `Kamu akan ${event.verb}  ${event.noun} ini.`,
         icon: "question",
         showDenyButton: true,
         showCancelButton: false,
-        confirmButtonText: "Yup, do it!",
-        denyButtonText: `Nope ...`,
+        confirmButtonText: "Ya, lakukanlah!",
+        denyButtonText: `Gak Dulu ...`,
     };
 
     Swal.fire(config).then(async (result) => {
@@ -25,7 +25,7 @@ export function handleClick({ data, event, uri, redirect = uri }) {
 
             const message = res.message;
             const successResponse = {
-                title: "Success!",
+                title: "Berhasil!",
                 text: message,
                 icon: "success",
             };

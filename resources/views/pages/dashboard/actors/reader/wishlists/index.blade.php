@@ -35,7 +35,7 @@
                 <div class="d-flex flex-column flex-md-row justify-content-between" style="row-gap: 1rem;">
                     <h4>Your Wishlist</h4>
 
-                    <div class="dropdown dropdown-color-icon d-flex justify-content-start">
+                    {{-- <div class="dropdown dropdown-color-icon d-flex justify-content-start">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="export"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="select-all fa-fw fas me-1"></span> Export
@@ -77,7 +77,7 @@
                                 </button>
                             </form>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="card-body">
@@ -114,7 +114,7 @@
                                         </div>
 
                                         <div class="me-2">
-                                            <a href="/books/{{ $wishlist->book->id_buku }}" class="px-2 pt-2 btn btn-info">
+                                            <a href="/buku/{{ $wishlist->book->slug }}" class="px-2 pt-2 btn btn-info">
                                                 <span class="select-all fa-fw fa-lg fas"></span>
                                             </a>
                                         </div>
@@ -124,7 +124,7 @@
                         @empty
                             <tr>
                                 <td colspan="5">
-                                    <p class="pt-3 text-center">Nothing :(</p>
+                                    <p class="pt-3 text-center">Gak ada :(</p>
                                 </td>
                             </tr>
                         @endforelse

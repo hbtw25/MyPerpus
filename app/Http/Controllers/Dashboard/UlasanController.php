@@ -94,7 +94,7 @@ class UlasanController extends Controller
             }
 
             $review->update($credentials);
-            return redirect("books/" . $review->book->id_buku)->withSuccess("Your review has been updated!");
+            return redirect("buku/" . $review->book->slug)->withSuccess("Your review has been updated!");
         }
 
         return view("errors.403");

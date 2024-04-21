@@ -38,7 +38,7 @@ class MasterBukuController extends Controller
 
         if ($theUser->role == "admin") {
             $viewVariables = [
-                "title" => "Book",
+                "title" => "Buku",
                 "books" => $books,
             ];
             return view('pages.dashboard.actors.admin.books.index', $viewVariables);
@@ -46,7 +46,7 @@ class MasterBukuController extends Controller
 
         if ($theUser->role == "petugas") {
             $viewVariables = [
-                "title" => "Book",
+                "title" => "Buku",
                 "books" => $books,
             ];
             return view('pages.dashboard.actors.officer.books.index', $viewVariables);
@@ -81,26 +81,36 @@ class MasterBukuController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $theUser = Auth::user();
-        $this->rules["year_published"][] = "max:" . now()->year;
+{
+    $theUser = Auth::user();
+    $this->rules["tahun_terbit"][] = "max:" . now()->year;
 
-        if ($theUser->role == "admin" || $theUser->role == "petugas") {
-            $credentials = $request->validate($this->rules);
-            $credentials["created_by"] = $theUser->id_user;
+    if ($theUser->role == "admin" || $theUser->role == "petugas") {
+        $credentials = $request->validate($this->rules);
+        $credentials["created_by"] = $theUser->id_user;
 
-            // Generate slug
-            $credentials["slug"] = Str::slug($credentials["judul"]);
+        // Generate slug
+        $credentials["slug"] = Str::slug($credentials["judul"]);
 
-            if ($request->has("cover")) $credentials["cover"] = $credentials["cover"]->store("book/covers");
+        if ($request->has("cover")) $credentials["cover"] = $credentials["cover"]->store("book/covers");
 
+        try {
             $book = Buku::create($credentials);
             $book->genres()->sync($credentials["genres"]);
-            return redirect("/dashboard/books")->withSuccess("The book has been created!");
-        };
+            return redirect("/dashboard/books")->withSuccess("Buku telah dibuat!");
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Integrity constraint violation, duplicate entry for slug
+            if ($e->errorInfo[1] == 1062) {
+                return redirect()->back()->withErrors(["slug_error" => "Judul buku sudah digunakan, silakan gunakan judul yang berbeda."]);
+            } else {
+                return redirect()->back()->withErrors(["general_error" => "Terjadi kesalahan saat menyimpan buku."]);
+            }
+        }
+    };
 
-        return view("errors.403");
-    }
+    return view("errors.403");
+}
+
 
     public function edit(Buku $book)
     {
@@ -111,7 +121,7 @@ class MasterBukuController extends Controller
         if ($theUser->role == "admin") {
 
             $viewVariables = [
-                "title" => $book->title,
+                "title" => $book->judul,
                 "book" => $book,
                 "genres" => $genres,
             ];
@@ -120,7 +130,7 @@ class MasterBukuController extends Controller
 
         if ($theUser->role == "petugas") {
             $viewVariables = [
-                "title" => $book->title,
+                "title" => $book->judul,
                 "book" => $book,
                 "genres" => $genres,
             ];
@@ -131,33 +141,43 @@ class MasterBukuController extends Controller
     }
 
     public function update(Request $request, Buku $book)
-    {
-        $theUser = Auth::user();
-        $this->rules["year_published"][] = "max:" . now()->year;
+{
+    $theUser = Auth::user();
+    $this->rules["tahun_terbit"][] = "max:" . now()->year;
 
-        if ($theUser->role == "admin" || $theUser->role == "petugas") {
-            $credentials = $request->validate($this->rules);
-            $credentials["updated_by"] = $theUser->id_user;
+    if ($theUser->role == "admin" || $theUser->role == "petugas") {
+        $credentials = $request->validate($this->rules);
+        $credentials["updated_by"] = $theUser->id_user;
 
-            // Update slug if judul changes
-            if ($request->has("judul") && $request->judul !== $book->judul) {
-                $credentials["slug"] = Str::slug($credentials["judul"]);
-            }
+        // Update slug if judul changes
+        if ($request->has("judul") && $request->judul !== $book->judul) {
+            $credentials["slug"] = Str::slug($credentials["judul"]);
+        }
 
-            if ($request->has("cover")) {
-                if ($book->cover) Storage::delete($book->cover);
-                $credentials["cover"] = $credentials["cover"]->store("book/covers");
-            };
+        if ($request->has("cover")) {
+            if ($book->cover) Storage::delete($book->cover);
+            $credentials["cover"] = $credentials["cover"]->store("book/covers");
+        };
 
+        try {
             $book->update($credentials);
             if (array_key_exists("genres", $credentials))
                 $book->genres()->sync($credentials["genres"]);
 
-            return redirect("/dashboard/books")->withSuccess("The book has been updated!");
-        };
+            return redirect("/dashboard/books")->withSuccess("Buku telah diperbarui!");
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Integrity constraint violation, duplicate entry for slug
+            if ($e->errorInfo[1] == 1062) {
+                return redirect()->back()->withErrors(["slug_error" => "Judul buku sudah digunakan, silakan gunakan judul yang berbeda."]);
+            } else {
+                return redirect()->back()->withErrors(["general_error" => "Terjadi kesalahan saat memperbarui buku."]);
+            }
+        }
+    };
 
-        return view("errors.403");
-    }
+    return view("errors.403");
+}
+
 
     public function destroy(Buku $book)
     {
@@ -166,34 +186,34 @@ class MasterBukuController extends Controller
         if ($theUser->role == "admin") {
             try {
                 if ($book->stock > 0)
-                    throw new \Exception("Stock in this book prevents removing.");
+                    throw new \Exception("Stok dalam buku ini mencegah penghapusan.");
                 if (!Buku::destroy($book->id_buku))
-                    throw new \Exception("Error removing the book.");
+                    throw new \Exception("Terjadi kesalahan saat menghapus buku.");
             } catch (\PDOException | ModelNotFoundException | QueryException | \Exception $e) {
                 return $this->responseJsonMessage($e->getMessage(), 500);
             } catch (\Exception $e) {
-                return $this->responseJsonMessage("An error occurred: " . $e->getMessage(), 500);
+                return $this->responseJsonMessage("Terjadi kesalahan: " . $e->getMessage(), 500);
             }
 
-            return $this->responseJsonMessage("The book has been removed!");
+            return $this->responseJsonMessage("Buku telah dihapus!");
         };
 
         if ($theUser->role == "petugas") {
             try {
                 if ($book->stock > 0)
-                    throw new \Exception("Stock in this book prevents removing.");
+                    throw new \Exception("Stok dalam buku ini mencegah penghapusan.");
                 if (!Buku::destroy($book->id_buku))
-                    throw new \Exception("Error removing the book.");
+                    throw new \Exception("Terjadi kesalahan saat menghapus buku.");
             } catch (\PDOException | ModelNotFoundException | QueryException | \Exception $e) {
                 return $this->responseJsonMessage($e->getMessage(), 500);
             } catch (\Exception $e) {
-                return $this->responseJsonMessage("An error occurred: " . $e->getMessage(), 500);
+                return $this->responseJsonMessage("Terjadi kesalahan: " . $e->getMessage(), 500);
             }
 
-            return $this->responseJsonMessage("The book has been removed!");
+            return $this->responseJsonMessage("Buku telah dihapus!");
         };
 
-        return $this->responseJsonMessage("You are unauthorized to do this action.", 422);
+        return $this->responseJsonMessage("Anda tidak berwenang melakukan tindakan ini!", 422);
     }
 
     public function export(Request $request)

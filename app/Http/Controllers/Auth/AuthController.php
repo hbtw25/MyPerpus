@@ -31,15 +31,15 @@ class AuthController extends Controller
         $user = User::firstWhere("username", $credentials["username"]);
 
         if ($user)
-            if ($user->flag_active === "N" or $user->deleted_at) return back()->with("error", "Your account has been blocked!");
+            if ($user->flag_active === "N" or $user->deleted_at) return back()->with("error", "Akun Anda telah diblokir!");
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            Alert::success('Hore!', 'Login successfullyy!');
+            Alert::success('Hore!', 'Login berhasil!');
             return redirect()->intended('/dashboard');
         }
 
-        return back()->with("error", "The provided credentials do not match our records.");
+        return back()->with("error", "Kredensial yang diberikan tidak cocok dengan catatan kami.");
     }
 
     public function logout(Request $request)
@@ -47,6 +47,6 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/')->withSuccess("Logout successfully!");
+        return redirect('/')->withSuccess("Berhasil keluar!");
     }
 }

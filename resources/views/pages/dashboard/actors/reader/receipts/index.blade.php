@@ -11,14 +11,13 @@
     <div class="page-title">
         <div class="row">
             <div class="order-last col-12 col-md-6 order-md-1">
-                <h3>Receipt</h3>
-                <p class="text-subtitle text-muted">This is a list of all receipts that have been made by the admin or
-                    officer.
+                <h3>Peminjaman</h3>
+                <p class="text-subtitle text-muted">Ini adalah daftar seluruh Peminjaman yang telah dibuat oleh Peminjam.
                 </p>
                 <hr>
                 <div class="mb-4">
                     <a href="/dashboard/receipts/create" class="px-2 pt-2 btn btn-success me-1">
-                        <span class="text-white select-all fa-fw fa-lg fas"></span> Create Receipt
+                        <span class="text-white select-all fa-fw fa-lg fas"></span> Buat Peminjaman
                     </a>
                 </div>
             </div>
@@ -26,7 +25,7 @@
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Receipt</li>
+                        <li class="breadcrumb-item active" aria-current="page">Peminjaman</li>
                     </ol>
                 </nav>
             </div>
@@ -36,9 +35,9 @@
         <div class="card">
             <div class="card-header">
                 <div class="d-flex flex-column flex-md-row justify-content-between" style="row-gap: 1rem;">
-                    <h4>Receipt</h4>
+                    <h4>Peminjaman</h4>
 
-                    <div class="dropdown dropdown-color-icon d-flex justify-content-start">
+                    {{-- <div class="dropdown dropdown-color-icon d-flex justify-content-start">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="export"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="select-all fa-fw fas me-1"></span> Export
@@ -80,7 +79,7 @@
                                 </button>
                             </form>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="card-body">
@@ -88,11 +87,11 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Reader</th>
-                            <th>Book</th>
-                            <th>jumlah</th>
+                            <th>Peminjam</th>
+                            <th>Buku</th>
+                            <th>Jumlah</th>
                             <th>Status</th>
-                            <th>Date</th>
+                            <th>Tanggal</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -109,7 +108,7 @@
                                         @elseif($receipt->status === 'dipinjam') {{ 'bg-warning' }}
                                         @elseif($receipt->status === 'terlambat') {{ 'bg-danger' }} @endif">{{ Str::title($receipt->status) }}</span>
                                 </td>
-                                <td>{{ $receipt->tanggal_peminjaman->format('j M Y') }} to {{ $receipt->tanggal_pengembalian->format('j M Y') }}
+                                <td>{{ $receipt->tanggal_peminjaman->format('j M Y') }} sampai {{ $receipt->tanggal_pengembalian->format('j M Y') }}
                                 </td>
                                 <td>
                                     <div class="d-flex">
@@ -145,30 +144,30 @@
                                                                 data-bs-dismiss="modal"></span>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <p><span class="fw-bold">Reader</span>:
+                                                            <p><span class="fw-bold">Peminjam</span>:
                                                                 {{ $receipt->user->nama_lengkap }}</p>
-                                                            <p><span class="fw-bold">Reader's status</span>:
+                                                            <p><span class="fw-bold"> status Peminjam</span>:
                                                                 @if ($receipt->user->flag_active == 'Y')
                                                                     Active
                                                                 @else
                                                                     Non-active
                                                                 @endif
                                                             </p>
-                                                            <p><span class="fw-bold">Book</span>:
+                                                            <p><span class="fw-bold">Buku</span>:
                                                                 {{ $receipt->book->judul }}</p>
-                                                            <p><span class="fw-bold">jumlah</span>:
+                                                            <p><span class="fw-bold">Jumlah</span>:
                                                                 {{ $receipt->jumlah }}</p>
-                                                            <p><span class="fw-bold">From time</span>:
+                                                            <p><span class="fw-bold">Dari Tanggal</span>:
                                                                 {{ $receipt->tanggal_peminjaman->format('j F Y') }}</p>
-                                                            <p><span class="fw-bold">To time</span>:
+                                                            <p><span class="fw-bold">Sampai Tanggal</span>:
                                                                 {{ $receipt->tanggal_pengembalian->format('j F Y') }}</p>
-                                                            <p><span class="fw-bold">Time range</span>:
+                                                            <p><span class="fw-bold">Jangka Waktu</span>:
                                                                 {{ $receipt->tanggal_peminjaman->diff($receipt->tanggal_pengembalian)->format('%a') }}
-                                                                day(s)
+                                                               Hari
                                                             </p>
-                                                            <p><span class="fw-bold">Time left</span>:
+                                                            <p><span class="fw-bold">Sisa Waktu</span>:
                                                                 @if (now() >= $receipt->tanggal_pengembalian)
-                                                                    0 day
+                                                                    0 Hari
                                                                 @else
                                                                     {{ $receipt->tanggal_pengembalian->diffInDays(now()) }}
                                                                 @endif
@@ -177,10 +176,10 @@
                                                                 {{ Str::title($receipt->status) }}</p>
 
                                                             @if ($receipt->status === 'dikembalikan')
-                                                                <p><span class="fw-bold">Returned at</span>:
+                                                                <p><span class="fw-bold">Dikembalikan pada</span>:
                                                                     {{ $receipt->tanggal_dikembalikan->format('j F Y') }}</p>
                                                             @endif
-                                                            <p><span class="fw-bold">Receiptment is created by</span>:
+                                                            <p><span class="fw-bold">Resi Dibuat Oleh</span>:
                                                                 {{ $receipt->createdBy->nama_lengkap }}
                                                             </p>
                                                         </div>
@@ -201,7 +200,7 @@
                         @empty
                             <tr>
                                 <td colspan="7">
-                                    <p class="pt-3 text-center">Nothing :(</p>
+                                    <p class="pt-3 text-center">Gak ada :(</p>
                                 </td>
                             </tr>
                         @endforelse

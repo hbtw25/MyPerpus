@@ -30,10 +30,21 @@ class MasterGenreController extends Controller
             $genres = Kategori::with(["books", "createdBy"])->get();
 
             $viewVariables = [
-                "title" => "Genre",
+                "title" => "Kategori",
                 "genres" => $genres,
             ];
             return view('pages.dashboard.actors.admin.genres.index', $viewVariables);
+        };
+
+
+        if ($theUser->role == "petugas") {
+            $genres = Kategori::with(["books", "createdBy"])->get();
+
+            $viewVariables = [
+                "title" => "Kategori",
+                "genres" => $genres,
+            ];
+            return view('pages.dashboard.actors.officer.genres.index', $viewVariables);
         };
 
         return view("errors.403");
@@ -45,9 +56,18 @@ class MasterGenreController extends Controller
 
         if ($theUser->role == "admin") {
             $viewVariables = [
-                "title" => "Create Genre",
+                "title" => "Buat Genre",
             ];
             return view('pages.dashboard.actors.admin.genres.create', $viewVariables);
+        };
+
+
+
+        if ($theUser->role == "petugas") {
+            $viewVariables = [
+                "title" => "Buat Genre",
+            ];
+            return view('pages.dashboard.actors.officer.genres.create', $viewVariables);
         };
 
         return view("errors.403");
@@ -63,8 +83,18 @@ class MasterGenreController extends Controller
             $credentials["slug"] = Str::slug($credentials["nama"]); // Generate slug from nama
 
             Kategori::create($credentials);
-            return redirect("/dashboard/genres")->withSuccess("The genre has been created!");
+            return redirect("/dashboard/genres")->withSuccess("Genre telah dibuat!");
         };
+        if ($theUser->role == "petugas") {
+            $credentials = $request->validate($this->rules);
+            $credentials["created_by"] = $theUser->id_user;
+            $credentials["slug"] = Str::slug($credentials["nama"]); // Generate slug from nama
+
+            Kategori::create($credentials);
+            return redirect("/dashboard/genres")->withSuccess("Genre telah dibuat!");
+        };
+
+
 
         return view("errors.403");
     }
@@ -80,25 +110,40 @@ class MasterGenreController extends Controller
             ];
             return view('pages.dashboard.actors.admin.genres.edit', $viewVariables);
         };
-
+        if ($theUser->role == "petugas") {
+            $viewVariables = [
+                "title" => $genre->nama,
+                "genre" => $genre,
+            ];
+            return view('pages.dashboard.actors.officer.genres.edit', $viewVariables);
+        };
         return view("errors.403");
     }
 
     public function update(Request $request, Kategori $genre)
-{
-    $theUser = Auth::user();
+    {
+        $theUser = Auth::user();
 
-    if ($theUser->role == "admin") {
-        $credentials = $request->validate($this->rules);
-        $credentials["updated_by"] = $theUser->id_user;
-        $credentials["slug"] = Str::slug($credentials["nama"]); // Generate slug from nama
+        if ($theUser->role == "admin") {
+            $credentials = $request->validate($this->rules);
+            $credentials["updated_by"] = $theUser->id_user;
+            $credentials["slug"] = Str::slug($credentials["nama"]); // Generate slug from nama
 
-        $genre->update($credentials);
-        return redirect("/dashboard/genres")->withSuccess("The genre has been updated!");
-    };
+            $genre->update($credentials);
+            return redirect("/dashboard/genres")->withSuccess("Genre telah diperbarui!");
+        };
 
-    return view("errors.403");
-}
+        if ($theUser->role == "petugas") {
+            $credentials = $request->validate($this->rules);
+            $credentials["updated_by"] = $theUser->id_user;
+            $credentials["slug"] = Str::slug($credentials["nama"]); // Generate slug from nama
+
+            $genre->update($credentials);
+            return redirect("/dashboard/genres")->withSuccess("Genre telah diperbarui!");
+        };
+
+        return view("errors.403");
+    }
 
     public function destroy(Kategori $genre)
     {
@@ -108,58 +153,83 @@ class MasterGenreController extends Controller
         if ($theUser->role == "admin") {
             try {
                 if ($genre->books->count() > 0)
-                    throw new \Exception("Books in this genre prevents non-activating.");
+                    throw new \Exception("Buku dalam genre ini mencegah non-aktivasi atau dihapuskan!.");
                 if (!$genre->update(["updated_by" => $theUser->id_user, "flag_active" => "N", "deleted_at" => null]))
-                    throw new \Exception("Error deactivating the genre.");
+                    throw new \Exception("Error menonaktifkan genre.");
                     if (!Kategori::destroy($genre->id_kategori))
-                    throw new \Exception("Error removing the kategori.");
+                    throw new \Exception("Error menghapus kategori.");
             } catch (\PDOException | ModelNotFoundException | QueryException | \Exception $e) {
                 return $this->responseJsonMessage($e->getMessage(), 500);
             } catch (\Exception $e) {
-                return $this->responseJsonMessage("An error occurred: " . $e->getMessage(), 500);
+                return $this->responseJsonMessage("Terjadi kesalahan: " . $e->getMessage(), 500);
             }
 
-            return $this->responseJsonMessage("The genre has been non-activated!");
+            return $this->responseJsonMessage("Genre telah dihapus!");
         };
 
-        return $this->responseJsonMessage("You are unauthorized to do this action.", 422);
+
+        if ($theUser->role == "petugas") {
+            try {
+                if ($genre->books->count() > 0)
+                    throw new \Exception("Buku dalam genre ini mencegah non-aktivasi atau dihapuskan!.");
+                if (!$genre->update(["updated_by" => $theUser->id_user, "flag_active" => "N", "deleted_at" => null]))
+                    throw new \Exception("Error menonaktifkan genre.");
+                    if (!Kategori::destroy($genre->id_kategori))
+                    throw new \Exception("Error menghapus kategori.");
+            } catch (\PDOException | ModelNotFoundException | QueryException | \Exception $e) {
+                return $this->responseJsonMessage($e->getMessage(), 500);
+            } catch (\Exception $e) {
+                return $this->responseJsonMessage("Terjadi kesalahan: " . $e->getMessage(), 500);
+            }
+
+            return $this->responseJsonMessage("Genre telah dihapus!");
+        };
+
+        return $this->responseJsonMessage("Anda tidak diotorisasi untuk melakukan tindakan ini.", 422);
+
+
+
     }
+
+
 
 
     public function activate(Kategori $genre)
     {
         $theUser = Auth::user();
 
-        if ($theUser->role == "admin") {
+        if ($theUser->role == "admin" || $theUser->role == "petugas") {
             try {
                 if (!$genre->update(["updated_by" => $theUser->id_user, "flag_active" => "Y", "deleted_at" => null]))
-                    throw new \Exception("Error activating the genre.");;
+                    throw new \Exception("Error mengaktifkan genre.");
             } catch (\PDOException | ModelNotFoundException | QueryException | \Exception $e) {
                 return $this->responseJsonMessage($e->getMessage(), 500);
             } catch (\Exception $e) {
-                return $this->responseJsonMessage("An error occurred: " . $e->getMessage(), 500);
+                return $this->responseJsonMessage("Terjadi kesalahan: " . $e->getMessage(), 500);
             }
 
-            return $this->responseJsonMessage("The genre has been activated!");
+            return $this->responseJsonMessage("Genre telah diaktifkan!");
         };
 
-        return $this->responseJsonMessage("You are unauthorized to do this action.", 422);
+
+        return $this->responseJsonMessage("Anda tidak diotorisasi untuk melakukan tindakan ini.", 422);
     }
 
     public function export(Request $request)
-    {
-        $validator = Validator::make($request->all(), $this->exportRules);
-        if ($validator->fails()) return view("errors.403");
-        $creds = $validator->validate();
+{
+    $validator = Validator::make($request->all(), $this->exportRules);
+    if ($validator->fails()) return view("errors.403");
+    $creds = $validator->validate();
 
-        $fileName = now()->format("Y_m_d_His") . "." . strtolower($creds["type"]);
-        $writterType = constant("\Maatwebsite\Excel\Excel::" . $creds["type"]);
+    $fileName = now()->format("Y_m_d_His") . "." . strtolower($creds["type"]);
+    $writterType = constant("\Maatwebsite\Excel\Excel::" . $creds["type"]);
 
-        $theUser = Auth::user();
-        if ($theUser->role == "admin") {
-            if ($creds["table"] === "all-of-genres") return (new AllOfGenresExport)->download($fileName, $writterType);
-        };
+    $theUser = Auth::user();
+    if ($theUser->role == "admin" || $theUser->role == "petugas") {
+        if ($creds["table"] === "all-of-genres") return (new AllOfGenresExport)->download($fileName, $writterType);
+    };
 
-        return view("errors.403");
-    }
+    return view("errors.403");
+}
+
 }

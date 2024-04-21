@@ -35,7 +35,7 @@ class PeminjamanController extends Controller
         // Admin
         if ($theUser->role === "admin") {
             $viewVariables = [
-                "title" => "Receipt",
+                "title" => "Peminjaman",
                 "receipts" => $receipts,
             ];
             return view("pages.dashboard.actors.admin.receipts.index", $viewVariables);
@@ -44,7 +44,7 @@ class PeminjamanController extends Controller
         // Officer
         if ($theUser->role === "petugas") {
             $viewVariables = [
-                "title" => "Receipt",
+                "title" => "Peminjaman",
                 "receipts" => $receipts,
             ];
             return view("pages.dashboard.actors.officer.receipts.index", $viewVariables);
@@ -53,7 +53,7 @@ class PeminjamanController extends Controller
         // Reader
         if ($theUser->role === "peminjam") {
             $viewVariables = [
-                "title" => "Receipt",
+                "title" => "Peminjaman",
                 "receipts" => $receipts->where("id_user", $theUser->id_user),
             ];
             return view("pages.dashboard.actors.reader.receipts.index", $viewVariables);
@@ -71,7 +71,7 @@ class PeminjamanController extends Controller
         // Admin
         if ($theUser->role === "admin") {
             $viewVariables = [
-                "title" => "Create Receipt",
+                "title" => "Buat Peminjaman",
                 "users" => $users,
                 "books" => $books,
             ];
@@ -81,7 +81,7 @@ class PeminjamanController extends Controller
         // Officer
         if ($theUser->role === "petugas") {
             $viewVariables = [
-                "title" => "Create Receipt",
+                "title" => "Buat Peminjaman",
                 "users" => $users,
                 "books" => $books,
             ];
@@ -95,7 +95,7 @@ class PeminjamanController extends Controller
          // peminjam
          if ($theUser->role === "peminjam") {
             $viewVariables = [
-                "title" => "Create Receipt",
+                "title" => "Buat Peminjaman",
                 "users" => $users->where("id_user", $theUser->id_user),
                 "books" => $books,
                 "id_buku" =>$request->id_buku
@@ -118,11 +118,12 @@ class PeminjamanController extends Controller
             $book = Buku::firstWhere("id_buku", $credentials["id_buku"]);
             // Check stock
             if ($book->stock < $credentials["jumlah"])
-                return redirect("/dashboard/receipts")->withErrors("Stock is not enough!");
+                return redirect("/dashboard/receipts")->withErrors("Stok tidak cukup!");
 
             Peminjaman::create($credentials);
 
-            return redirect("/dashboard/receipts")->withSuccess("Receipt created successfully!");
+            return redirect("/dashboard/receipts")->withSuccess("
+peminjaman berhasil dibuat!");
         }
 
         // Officer
@@ -132,11 +133,11 @@ class PeminjamanController extends Controller
             $book = Buku::firstWhere("id_buku", $credentials["id_buku"]);
             // Check stock
             if ($book->stock < $credentials["jumlah"])
-                return redirect("/dashboard/receipts")->withErrors("Stock is not enough!");
+                return redirect("/dashboard/receipts")->withErrors("Stok tidak cukup!");
 
             Peminjaman::create($credentials);
 
-            return redirect("/dashboard/receipts")->withSuccess("Receipt created successfully!");
+            return redirect("/dashboard/receipts")->withSuccess("peminjaman berhasil dibuat!");
         }
 
         if ($theUser->role === "peminjam") {
@@ -145,11 +146,12 @@ class PeminjamanController extends Controller
             $book = Buku::firstWhere("id_buku", $credentials["id_buku"]);
             // Check stock
             if ($book->stock < $credentials["jumlah"])
-                return redirect("/dashboard/receipts")->withErrors("Stock is not enough!");
+                return redirect("/dashboard/receipts")->withErrors("Stok tidak cukup!");
 
             Peminjaman::create($credentials);
 
-            return redirect("/dashboard/receipts")->withSuccess("Receipt created successfully!");
+            return redirect("/dashboard/receipts")->withSuccess("
+peminjaman berhasil dibuat!");
         }
 
         return view("errors.403");
@@ -174,12 +176,12 @@ class PeminjamanController extends Controller
             ], 500);
         } catch (\Throwable $e) {
             return response()->json([
-                'message' => "An error occured: " . $e->getMessage(),
+                'message' => "Terjadi kesalahan : " . $e->getMessage(),
             ], 500);
         }
 
         return response()->json([
-            "message" => "The receipt has been updated. Book returned.",
+            "message" => "Peminjaman telah diperbarui. Buku sudah dikembalikan.",
         ], 200);
     }
 

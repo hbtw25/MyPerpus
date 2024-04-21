@@ -64,7 +64,7 @@
                                 <label for="book" class="form-label">Book</label>
                                 <div class="position-relative">
                                     <select id="book" class="choices form-select" name="id_buku">
-                                        <option placeholder>Please pick the book ...</option>
+                                        <option placeholder>Silakan pilih bukunya...</option>
                                         @foreach ($books as $book)
                                             <option value="{{ $book->id_buku }}"
                                                 @if (old('id_buku') == $book->id_buku) selected @endif>{{ $book->judul }}
@@ -108,7 +108,7 @@
                                 <label for="tanggal_peminjaman" class="form-label">From</label>
                                 <div class="position-relative">
                                     <input name="tanggal_peminjaman" id="tanggal_peminjaman" type="date"
-                                        class="mb-2 form-control flatpickr-from" placeholder="Select date ..."
+                                        class="mb-2 form-control flatpickr-from" placeholder="Pilih tanggal ..."
                                         value="{{ old('tanggal_peminjaman') ?? date('Y-m-d') }}">
                                     <div class="form-control-icon">
                                         <i class="py-2 bi bi-calendar-day"></i>
@@ -128,7 +128,7 @@
                                 <label for="tanggal_pengembalian" class="form-label">To</label>
                                 <div class="position-relative">
                                     <input name="tanggal_pengembalian" id="tanggal_pengembalian" type="date"
-                                        class="mb-2 form-control flatpickr-to" placeholder="Select date ..."
+                                        class="mb-2 form-control flatpickr-to" placeholder="Pilih tanggal ..."
                                         value="{{ old('tanggal_pengembalian') }}">
                                     <div class="form-control-icon">
                                         <i class="py-2 bi bi-calendar-check"></i>

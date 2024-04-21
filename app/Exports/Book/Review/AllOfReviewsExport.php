@@ -57,6 +57,7 @@ implements WithProperties, FromCollection, WithTitle, WithHeadings, WithMapping,
             "User",
             "Photo",
             "Body",
+            "rating",
             "Created at",
         ];
     }
@@ -67,6 +68,7 @@ implements WithProperties, FromCollection, WithTitle, WithHeadings, WithMapping,
             $review->user->nama_lengkap,
             $review->photo ? "yes" : 'no',
             strip_tags($review->body),
+            $review->rating,
             $review->created_at->format('j F Y, \a\t H.i'),
         ];
     }
