@@ -1,6 +1,6 @@
 <h1 align="center">Proyek UKK perpus hbtw! 👋</h1>
 
-![Landing Page](https://github.com/hbtw25/perpus-v2/blob/main/public/assets/perpus-v2.test_.png?raw=true)
+![Landing Page](https://github.com/hbtw25/MyPerpus/blob/main/public/assets/MyPerpus.test_.png?raw=true)
 ---
 
 <h2 id="tentang">🤔 Apa Konsep web yang saya buat?</h2>
@@ -66,16 +66,16 @@ Aplikasi digital perpustakaan dengan tata letak yang modern dan bersih, halaman 
 
 <h2 id="demo">🏦 ERD & Relasi antar tabel</h2>
 
-![ERD](https://github.com/hbtw25/perpus-v2/blob/main/erd.png?raw=true)
+![ERD](https://github.com/hbtw25/MyPerpus/blob/main/erd.png?raw=true)
 
-![RAT](https://github.com/hbtw25/perpus-v2/blob/main/relasiantartabel.png?raw=true)
+![RAT](https://github.com/hbtw25/MyPerpus/blob/main/relasiantartabel.png?raw=true)
 
 Tabel Failed_Jobs, Personal_access_tokens, Password_reset_tokens, migrations abaikan saja karna bawaan dari Laravel.
 
 
 <h2 id="demo">🏦 UML Diagram Use Case</h2>
 
-![UML](https://github.com/hbtw25/perpus-v2/blob/main/uml.jpeg?raw=true)
+![UML](https://github.com/hbtw25/MyPerpus/blob/main/uml.jpeg?raw=true)
 
 
 <h2 id="demo">🏠 Halaman Demo</h2>
@@ -96,8 +96,8 @@ Tabel Failed_Jobs, Personal_access_tokens, Password_reset_tokens, migrations aba
 1. Klona repositori
 
 ```bash
-git clone https://github.com/hbtw25/perpus-v2.git
-cd perpus-v2
+git clone https://github.com/hbtw25/Myperpus.git
+cd MyPerpus
 composer install
 npm install
 cp .env.example .env
@@ -133,8 +133,8 @@ php artisan serve
 -   Klona repositori:
 
 ```bash
-git clone https://github.com/hbtw25/perpus-v2.git
-cd perpus-v2
+git clone https://github.com/hbtw25/MyPerpus.git
+cd MyPerpus
 ```
 
 -   Salin file `.env.example` dengan `cp .env.example .env` dan konfigurasikan database:
@@ -196,4 +196,4 @@ docker compose run --rm --service-ports npm run dev
 
 <h2 id="pembuat">🧍 Pembuat</h2>
 
-<p>perpus-v2 dibuat oleh <a href="https://instagram.com/hbtwwwwww">hbtw</a>.</p>
+<p>MyPerpus dibuat oleh <a href="https://instagram.com/hbtwwwwww">hbtw</a>.</p>
